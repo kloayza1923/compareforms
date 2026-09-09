@@ -20,6 +20,9 @@ with tempfile.TemporaryDirectory() as directory:
     other={**finding,'id':'f2','category':'Diagnóstico documental','description':'Diagnóstico modificado','before':'K635 POLIPO DEL COLON','after':'K590 CONSTIPACION','page_original':2,'page_modified':29,'page_relocated':True}
     comparison={'content_coverage':{'method':'aligned-token-coverage-v1','total_units':100,'unmeasured_page_pairs':0,'units':{'unchanged':50,'modified':50,'added':0,'removed':0,'relocated':0,'review':0}},'status':'with_differences','engine_version':'deterministic-a/1.1.0','pages_original':30,'pages_modified':50,'pages_added':0,'pages_removed':0,'pages_relocated':1,'page_map':[],'findings':[finding,other],'limitations':['Limitación de prueba que debe estar cerrada.']}
     run={'id':'r','batch_id':'b','status':'completed','total':1,'completed':1,'report_available':False,'cases':[{'id':'c','patient_name':'PACIENTE DE PRUEBA','original_id':'o','modified_id':'m','status':'completed','comparison':comparison}]}
+    second_comparison={**comparison,'findings':[], 'content_coverage':{**comparison['content_coverage'],'units':{'unchanged':100,'modified':0,'added':0,'removed':0,'relocated':0,'review':0}}}
+    run['cases'].append({**run['cases'][0],'id':'c2','patient_name':'SEGUNDO PACIENTE','comparison':second_comparison})
+    run['total']=run['completed']=2
     with sync_playwright() as pw:
         browser=pw.chromium.launch(headless=True)
         for name,dist,hash_path in [('compareforms',root/'frontend/dist','#/runs/r'),('roboti',root.parent/'roboti/formsgenerator_front/dist','#/compareforms/runs/r')]:
@@ -41,7 +44,7 @@ with tempfile.TemporaryDirectory() as directory:
             page.route('**/api/**',respond)
             page.goto(f'http://127.0.0.1:{server.server_port}/{hash_path}')
             expect(page.get_by_role('heading',name='Observaciones documentales')).to_be_visible()
-            summary=page.get_by_role('region',name='Resumen estadístico de la revisión')
+            summary=page.get_by_role('region',name='Estadística del paciente')
             expect(summary).to_be_visible()
             expect(summary.get_by_role('img')).to_have_attribute('aria-label','Texto comparado: 50% con cambios o por revisar; 50% sin cambios')
             summary.get_by_role('button',name='Modificado 50% 2 incidencias').click()
@@ -49,6 +52,12 @@ with tempfile.TemporaryDirectory() as directory:
             summary.get_by_role('button',name='Ver todas las incidencias').click()
             out=root.parent/'roboti/output/evidence-qa';out.mkdir(parents=True,exist_ok=True)
             page.screenshot(path=str(out/(name+'-statistics.png')))
+            page.get_by_role('link',name='Resumen ejecutivo →').click()
+            expect(page.get_by_role('heading',name='Resumen ejecutivo',exact=True)).to_be_visible()
+            expect(page.get_by_role('region',name='Estadística del paciente')).to_have_count(0)
+            expect(page.get_by_role('region',name='Resumen estadístico de la revisión').get_by_role('img')).to_have_attribute('aria-label','Texto comparado: 25% con cambios o por revisar; 75% sin cambios')
+            page.get_by_role('link',name='Revisar paciente').first.click()
+            expect(page.get_by_role('region',name='Estadística del paciente')).to_be_visible()
             expect(page.get_by_text('Limitación de prueba que debe estar cerrada.')).not_to_be_visible()
             expect(page.get_by_role('button',name='Añadir observación')).to_have_count(0)
             page.get_by_label('Pág. desde').fill('29');page.get_by_label('Pág. hasta').fill('29')

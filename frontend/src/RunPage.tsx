@@ -38,9 +38,12 @@ export function HistoryPage() {
 export function RunPage({ runId, initialCaseId }: { runId: string; initialCaseId?: string }) {
   const [run, setRun] = useState<Run | null>(null);
   const [error, setError] = useState('');
-  const [selectedCase, setSelectedCase] = useState(initialCaseId || '');
+  const executive = initialCaseId === 'summary';
+  const [selectedCase, setSelectedCase] = useState(executive ? '' : initialCaseId || '');
+  useEffect(() => { if (initialCaseId && initialCaseId !== 'summary') setSelectedCase(initialCaseId); }, [initialCaseId]);
   const [patientSearch, setPatientSearch] = useState('');
   const [statisticType, setStatisticType] = useState<ChangeType | 'all'>('all');
+  useEffect(() => { if (!executive) setStatisticType('all'); }, [executive]);
   const [refresh, setRefresh] = useState(0);
   useEffect(() => {
     let alive = true; let timer: ReturnType<typeof setTimeout>;
@@ -62,7 +65,12 @@ export function RunPage({ runId, initialCaseId }: { runId: string; initialCaseId
     setSelectedCase(ranked[0]?.id || '');
   };
   const active = run && ['queued', 'running'].includes(run.status);
-  return <><PageHeading title="Revisión de resultados" action={<div className="d-flex gap-2 flex-wrap"><a href="#/history" className="btn btn-outline-secondary">Historial</a>{run && !active && <a href={`#/batches/${run.batch_id}`} className="btn btn-outline-primary">Volver a comparar</a>}{run?.report_available && <a href={reportUrl(run.id)} className="btn btn-primary"><Icon name="download" /> Descargar Excel</a>}</div>}>Consulta el resumen general y prioriza los pacientes con más incidencias antes de revisar la evidencia.</PageHeading>
+  if (executive) return <><PageHeading title="Resumen ejecutivo" action={<a className="btn btn-outline-primary" href={`#/runs/${runId}`}>Volver a pacientes</a>}>Resultados consolidados de todos los pacientes de esta ejecución.</PageHeading>
+    {error && <Notice tone="danger">{error}</Notice>}
+    {!run ? <Busy /> : <><RunStatistics cases={run.cases} totalCases={run.total} active={!!active} selected={statisticType} onSelect={selectStatistic} />
+      <section className="surface-card"><h2>Prioridad de revisión por paciente</h2><p className="form-text">Ordenados por cantidad de incidencias{statisticType !== 'all' ? ` · ${changeLabels[statisticType]}` : ''}.</p><div className="table-responsive"><table className="table audit-table"><thead><tr><th>Paciente</th><th>Incidencias</th><th>Estado</th><th>Detalle</th></tr></thead><tbody>{cases.map(item => <tr key={item.id}><td>{item.patient_name}</td><td>{incidenceCount(item, statisticType)}</td><td><StateBadge status={caseStatus(item)} /></td><td><a href={`#/runs/${runId}/${item.id}`}>Revisar paciente</a></td></tr>)}</tbody></table></div></section></>}
+    </>;
+  return <><PageHeading title="Revisión de resultados" action={<div className="d-flex gap-2 flex-wrap"><a href="#/history" className="btn btn-outline-secondary">Historial</a><a href={`#/runs/${runId}/summary`} className="btn btn-primary">Resumen ejecutivo →</a>{run && !active && <a href={`#/batches/${run.batch_id}`} className="btn btn-outline-primary">Volver a comparar</a>}{run?.report_available && <a href={reportUrl(run.id)} className="btn btn-primary"><Icon name="download" /> Descargar Excel</a>}</div>}>Selecciona un paciente para consultar sus cambios y revisar la evidencia.</PageHeading>
     {run?.report_available && <Notice>{excelSnapshotNotice}</Notice>}
     {error && <Notice tone="danger">No se pudo actualizar el progreso: {error}. Los trabajos ya iniciados continúan en el servidor.</Notice>}
     {!run ? <Busy /> : <>
@@ -70,7 +78,6 @@ export function RunPage({ runId, initialCaseId }: { runId: string; initialCaseId
       {run.total === 0 && <Notice tone="danger">Sin comparación: esta ejecución no tiene expedientes. No puede interpretarse como «sin diferencias».</Notice>}
       {run.error && <Notice tone="danger">{run.error}</Notice>}
       {run.status === 'partial' && <Notice tone="warning">Resultado parcial / no concluyente. Revisa los expedientes pendientes, errores y limitaciones antes de usar el informe.</Notice>}
-      <RunStatistics cases={run.cases} totalCases={run.total} active={!!active} selected={statisticType} onSelect={selectStatistic} />
       <div className="review-layout"><aside className="patient-selector surface-card"><h2>Pacientes <span>{cases.length}</span></h2><p className="form-text">Mayor número de incidencias primero{statisticType !== 'all' ? ` · ${changeLabels[statisticType]}` : ''}.</p><label className="visually-hidden" htmlFor="patient-search">Buscar paciente</label><input className="form-control mb-3" id="patient-search" type="search" placeholder="Buscar paciente…" value={patientSearch} onChange={event => setPatientSearch(event.target.value)} />{cases.map(item => <button key={item.id} className={`patient-button ${item.id === selectedCase ? 'selected' : ''}`} aria-pressed={item.id === selectedCase} onClick={() => setSelectedCase(item.id)}><strong>{item.patient_name || 'Paciente sin identificar'}</strong><StateBadge status={caseStatus(item)} /><small>{item.comparison ? `${incidenceCount(item, statisticType)} incidencias${statisticType !== 'all' ? ` de ${allFindings(item).length}` : ''}` : 'Comparación pendiente'}</small></button>)}{!cases.length && <p className="text-secondary small">No hay pacientes para mostrar.</p>}</aside>
         <div className="review-content">{current ? <CaseReview key={`${current.id}-${statisticType}`} initialType={statisticType} runId={run.id} caseItem={current} refresh={() => setRefresh(value => value + 1)} /> : <Empty title="Selecciona un paciente">La identificación y la evidencia se mostrarán aquí.</Empty>}</div></div>
     </>}</>;
@@ -96,6 +103,7 @@ export function CaseReview({ runId, caseItem, refresh, initialType = 'all' }: { 
     setFilterError(''); setFilters({ ...draft });
   };
   return <><section className="surface-card patient-detail"><p className="eyebrow">PACIENTE / EXPEDIENTE</p><h2 className="patient-name">{caseItem.patient_name || 'Identidad pendiente de verificación'}</h2><div className="patient-detail-actions"><StateBadge status={caseStatus(caseItem)} /><a href={documentUrl(caseItem.original_id)} target="_blank" rel="noopener noreferrer">Abrir PDF de origen ↗</a><a href={documentUrl(caseItem.modified_id)} target="_blank" rel="noopener noreferrer">Abrir PDF modificado ↗</a></div>
+    <RunStatistics scope="patient" cases={[caseItem]} totalCases={1} active={['queued', 'running'].includes(caseItem.status)} selected={filters.type as ChangeType | 'all'} onSelect={type => { const next = { type, from:'', to:'' }; setDraft(next); setFilters(next); setFilterError(''); }} />
     {comparison ? <>
       <div className="section-toolbar mt-4"><div><h3 className="small-heading mb-1">Observaciones documentales</h3><span className="text-secondary small">{visible.length} de {findings.length} · Páginas físicas del visor PDF</span></div>
         <form className="finding-filters" onSubmit={search}>
