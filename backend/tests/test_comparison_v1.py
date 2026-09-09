@@ -215,3 +215,34 @@ def test_unique_validation_code_matches_relocated_form():
 def test_different_validation_codes_do_not_pair_similar_templates():
     rows = _align_pages([Page(1,FORM+LABEL+'K635 POLIPO DEL COLON')], [Page(1,FORM.replace('2026-001','2026-002')+LABEL+'K635 POLIPO DEL COLON')])
     assert all(row['page_original'] is None or row['page_modified'] is None for row in rows)
+
+
+def test_content_coverage_measures_text_not_findings():
+    from app.comparison import Page, content_coverage
+    metric = content_coverage([Page(1, 'uno dos tres cuatro')], [Page(1, 'uno dos cinco seis')], [{'page_original':1,'page_modified':1}])
+    assert metric['total_units'] == 4
+    assert metric['units'] == {'unchanged':2,'added':0,'removed':0,'modified':2,'relocated':0,'review':0}
+
+
+def test_content_coverage_relocation_and_changes_do_not_overlap():
+    from app.comparison import Page, content_coverage
+    metric = content_coverage([Page(1, 'uno dos tres cuatro')], [Page(1, 'uno dos cinco seis extra')], [{'page_original':1,'page_modified':1,'relocated':True}])
+    assert metric['total_units'] == 5
+    assert metric['units']['relocated'] == 2
+    assert metric['units']['modified'] == 2
+    assert metric['units']['added'] == 1
+
+
+def test_content_coverage_abstains_for_unreadable_pages():
+    from app.comparison import Page, content_coverage
+    metric = content_coverage([Page(1, '', readable=False)], [Page(1, 'uno dos tres')], [{'page_original':1,'page_modified':1}])
+    assert metric['total_units'] == 0
+    assert metric['unmeasured_page_pairs'] == 1
+
+
+def test_content_coverage_accounts_uncertain_correspondence_and_extraction_order():
+    from app.comparison import Page, content_coverage
+    pages=[Page(1,'uno dos tres'),Page(2,'cuatro cinco')]
+    metric=content_coverage(pages,[Page(1,'tres uno dos'),Page(2,'seis siete')],[{'page_original':1,'page_modified':1},{'page_original':2,'page_modified':2,'review_required':True}])
+    assert metric['units']['unchanged'] == 3
+    assert metric['units']['review'] == 2

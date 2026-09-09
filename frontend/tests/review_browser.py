@@ -18,7 +18,7 @@ with tempfile.TemporaryDirectory() as directory:
     image_after=render_evidence(pdf_after,1,'$2,00 $3,0000 $25,00',ocr_enabled=False)
     finding={'id':'f1','change_type':'modified','category':'Importe documental','description':'Importe modificado','before':'$2,00 $3,3000 $25,30','after':'$2,00 $3,0000 $25,00','page_original':1,'page_modified':1,'confidence':1,'review_required':False}
     other={**finding,'id':'f2','category':'Diagnóstico documental','description':'Diagnóstico modificado','before':'K635 POLIPO DEL COLON','after':'K590 CONSTIPACION','page_original':2,'page_modified':29,'page_relocated':True}
-    comparison={'status':'with_differences','engine_version':'deterministic-a/1.1.0','pages_original':30,'pages_modified':50,'pages_added':0,'pages_removed':0,'pages_relocated':1,'page_map':[],'findings':[finding,other],'limitations':['Limitación de prueba que debe estar cerrada.']}
+    comparison={'content_coverage':{'method':'aligned-token-coverage-v1','total_units':100,'unmeasured_page_pairs':0,'units':{'unchanged':50,'modified':50,'added':0,'removed':0,'relocated':0,'review':0}},'status':'with_differences','engine_version':'deterministic-a/1.1.0','pages_original':30,'pages_modified':50,'pages_added':0,'pages_removed':0,'pages_relocated':1,'page_map':[],'findings':[finding,other],'limitations':['Limitación de prueba que debe estar cerrada.']}
     run={'id':'r','batch_id':'b','status':'completed','total':1,'completed':1,'report_available':False,'cases':[{'id':'c','patient_name':'PACIENTE DE PRUEBA','original_id':'o','modified_id':'m','status':'completed','comparison':comparison}]}
     with sync_playwright() as pw:
         browser=pw.chromium.launch(headless=True)
@@ -43,8 +43,8 @@ with tempfile.TemporaryDirectory() as directory:
             expect(page.get_by_role('heading',name='Observaciones documentales')).to_be_visible()
             summary=page.get_by_role('region',name='Resumen estadístico de la revisión')
             expect(summary).to_be_visible()
-            expect(summary.get_by_role('img')).to_have_attribute('aria-label','Distribución de 2 incidencias: Incorporado 0%, Retirado 0%, Modificado 100%, Reubicado 0%, Por revisar 0%')
-            summary.get_by_role('button',name='Modificado 100% 2 incidencias').click()
+            expect(summary.get_by_role('img')).to_have_attribute('aria-label','Texto comparado: 50% con cambios o por revisar; 50% sin cambios')
+            summary.get_by_role('button',name='Modificado 50% 2 incidencias').click()
             expect(page.get_by_label('Filtrar por tipo de cambio')).to_have_value('modified')
             summary.get_by_role('button',name='Ver todas las incidencias').click()
             out=root.parent/'roboti/output/evidence-qa';out.mkdir(parents=True,exist_ok=True)

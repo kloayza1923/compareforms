@@ -25,7 +25,9 @@ export interface Finding {
   source?: 'automatic' | 'manual';
   page_relocated?: boolean;
 }
+export interface ContentCoverage { method: string; units: Record<ChangeType | 'unchanged', number>; total_units: number; unmeasured_page_pairs: number; graphic_findings?: number }
 export interface Comparison {
+  content_coverage?: ContentCoverage;
   status: string; pages_original: number; pages_modified: number; pages_added: number; pages_removed: number;
   page_counts_reconciled?: boolean;
   pages_relocated: number; findings: Finding[]; page_map: {

@@ -21,7 +21,7 @@ import numpy as np
 from pypdf import PdfReader
 from scipy.optimize import linear_sum_assignment
 
-ENGINE_VERSION = "deterministic-a/1.1.0"
+ENGINE_VERSION = "deterministic-a/1.2.0"
 MAX_PAGES = 500
 MAX_TEXT_CHARS_PER_PAGE = 200_000
 MAX_RENDER_PIXELS = 20_000_000
@@ -412,6 +412,41 @@ def _line_changes(a: Page, b: Page) -> list[dict]:
     return findings
 
 
+def content_coverage(pages_a: list[Page], pages_b: list[Page], mapping: list[dict]) -> dict:
+    """Lexical coverage of aligned pages, not an error rate or finding count.
+
+    Common token occurrences are conserved regardless of PDF extraction order.
+    Excess tokens on each side form replacement slots, then additions/removals.
+    The denominator includes original slots plus additional modified slots.
+    Unreadable page pairs are excluded and explicitly reported, never estimated.
+    """
+    units = dict.fromkeys(('unchanged', 'added', 'removed', 'modified', 'relocated', 'review'), 0)
+    unreadable = 0
+    for row in mapping:
+        a = pages_a[row['page_original'] - 1] if row.get('page_original') else None
+        b = pages_b[row['page_modified'] - 1] if row.get('page_modified') else None
+        if any(not page.readable for page in (a, b) if page):
+            unreadable += 1
+            continue
+        old, new = Counter(a.tokens if a else []), Counter(b.tokens if b else [])
+        old_count, new_count = sum(old.values()), sum(new.values())
+        if not old_count and not new_count:
+            unreadable += 1
+            continue
+        if row.get('review_required') or not a or not b:
+            units['review'] += max(old_count, new_count)
+            continue
+        common = sum((old & new).values())
+        removed, added = old_count - common, new_count - common
+        replaced = min(removed, added)
+        units['modified'] += replaced
+        units['removed'] += removed - replaced
+        units['added'] += added - replaced
+        units['relocated' if row.get('relocated') else 'unchanged'] += common
+    return {'method': 'aligned-token-coverage-v1', 'units': units, 'total_units': sum(units.values()),
+            'unmeasured_page_pairs': unreadable}
+
+
 def compare_documents(original: Path, modified: Path, *, ocr_enabled: bool = True) -> dict:
     """Compare one already-confirmed patient pair; return JSON-serializable evidence."""
     original, modified = Path(original), Path(modified)
@@ -433,6 +468,8 @@ def compare_documents(original: Path, modified: Path, *, ocr_enabled: bool = Tru
     if hashes[0] == hashes[1]:
         result.update(status="no_differences_detected", priority=0, priority_reason="Archivos binariamente idénticos.", text_change_ratio=0, page_counts_reconciled=True, pages_evaluated_original=n, pages_evaluated_modified=m)
         result["page_map"] = [{"page_original": k, "page_modified": k, "status": "identical", "similarity": 1.0, "review_required": False} for k in range(1, n + 1)]
+        pages = [Page(k + 1, page.extract_text() or '') for k, page in enumerate(readers[0].pages)]
+        result['content_coverage'] = content_coverage(pages, pages, result['page_map'])
         return result
     pages_a = _extract(original, readers[0], ocr_enabled=ocr_enabled)
     pages_b = _extract(modified, readers[1], ocr_enabled=ocr_enabled)
@@ -515,6 +552,8 @@ def compare_documents(original: Path, modified: Path, *, ocr_enabled: bool = Tru
             inconclusive = True
             limitations.append(f"Original {po} / modificado {pm}: cambio gráfico pendiente de revisión visual; no se identificó automáticamente la región que lo explica.")
             row["visual_equal"] = False
+    result['content_coverage'] = content_coverage(pages_a, pages_b, mapping)
+    result['content_coverage']['graphic_findings'] = sum(f['category'] == 'Representación gráfica' for f in findings)
     result["page_counts_reconciled"] = m - n == result["pages_added"] - result["pages_removed"]
     result["text_change_ratio"] = round(changed_tokens / all_tokens, 6) if all_tokens else None
     result["limitations"] = list(dict.fromkeys(limitations))
