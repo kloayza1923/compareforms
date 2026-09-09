@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from pathlib import Path
 import os
+from dotenv import dotenv_values
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -13,6 +14,7 @@ class Settings:
     testing: bool = False
     auth_provider: str = field(default_factory=lambda: os.getenv("COMPAREFORMS_AUTH_PROVIDER", "local"))
     aitrol_env_file: str = field(default_factory=lambda: os.getenv("AITROL_ROBOTI_ENV_FILE", ""))
+    roboti_proxy_token: str = field(default_factory=lambda: os.getenv("COMPAREFORMS_PROXY_TOKEN") or dotenv_values(ROOT / ".env.roboti").get("COMPAREFORMS_PROXY_TOKEN", ""))
     session_hours: int = 8
     max_upload_bytes: int = 512 * 1024 * 1024
     max_pdf_bytes: int = 100 * 1024 * 1024
@@ -24,6 +26,8 @@ class Settings:
     ocr_enabled: bool = field(default_factory=lambda: os.getenv("OCR_ENABLED", "true").lower() == "true")
 
     def validate(self):
+        if self.roboti_proxy_token and len(self.roboti_proxy_token) < 32:
+            raise RuntimeError("COMPAREFORMS_PROXY_TOKEN requiere al menos 32 caracteres.")
         if self.auth_provider not in {"local", "aitrol"}:
             raise RuntimeError("COMPAREFORMS_AUTH_PROVIDER debe ser local o aitrol.")
         if self.auth_provider == "aitrol" and not self.aitrol_env_file:

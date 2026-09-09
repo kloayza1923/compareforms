@@ -1,0 +1,27 @@
+[Unit]
+Description=CompareForms persistent PostgreSQL worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sistemas201
+Group=sistemas201
+WorkingDirectory=/home/sistemas201/projects/compareforms/backend
+EnvironmentFile=/etc/compareforms/compareforms.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/virtual/compareforms/bin/python -m app.worker
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/sistemas201/projects/compareforms/documents
+# Drain jobs before planned restarts. Timeout/lease recovery is not a backup.
+TimeoutStopSec=300
+
+[Install]
+WantedBy=multi-user.target

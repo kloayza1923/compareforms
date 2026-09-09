@@ -18,6 +18,8 @@ def verify(password, hashed):
     except (VerificationError, InvalidHashError): return False
 
 def identity(request: Request, db, *, mutate=False):
+    if "X-Roboti-Proxy-Token" in request.headers:
+        return roboti_identity(request, db)
     token = request.cookies.get("compareforms_session", "")
     session = db.get(Session, digest(token)) if token else None
     user = db.get(User, session.user_id) if session and session.expires > now() else None
@@ -57,3 +59,32 @@ def throttle(db, username, ip):
     if count >= 10: raise HTTPException(429, "Demasiados intentos. Espere 15 minutos.")
     db.add(LoginAttempt(key=key))
     db.commit()
+
+
+def roboti_identity(request: Request, db):
+    """Trust only the authenticated Roboti gateway; revalidate company/role here."""
+    from types import SimpleNamespace
+    from .aitrol_identity import AitrolIdentityProvider, IdentityUnavailable, membership
+    cfg = db.info.get("settings")
+    expected = cfg.roboti_proxy_token if cfg else ""
+    supplied = request.headers.get("X-Roboti-Proxy-Token", "")
+    if not cfg or cfg.auth_provider != "aitrol" or len(expected) < 32 or not secrets.compare_digest(supplied, expected):
+        raise HTTPException(401, "Integración Roboti no autorizada")
+    user_id = request.headers.get("X-Roboti-User", "")
+    company_id = request.headers.get("X-Roboti-Company", "")
+    if not user_id or not company_id or max(len(user_id), len(company_id)) > 100:
+        raise HTTPException(401, "Identidad Roboti incompleta")
+    application = request.scope.get("app")
+    provider = getattr(application.state, "identity_provider", None) if application else None
+    provider = provider or AitrolIdentityProvider(cfg)
+    try:
+        actor = provider.revalidate(user_id, company_id)
+    except IdentityUnavailable:
+        raise HTTPException(503, "No se pudo verificar el acceso en Aitrol") from None
+    if actor is None:
+        raise HTTPException(403, "Usuario o empresa no autorizados en CompareForms")
+    user = membership(db, actor, company_id)
+    db.commit()
+    # CSRF and Roboti-session validity were checked by the gateway on every request.
+    # No independent browser session is created, so Roboti logout revokes this access.
+    return user, SimpleNamespace(csrf="")
