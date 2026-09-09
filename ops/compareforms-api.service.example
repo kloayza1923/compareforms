@@ -1,0 +1,28 @@
+[Unit]
+Description=CompareForms FastAPI (manual audit portal)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Provision this dedicated account and access permissions before installing.
+User=compareforms
+Group=compareforms
+WorkingDirectory=/home/sistemas201/projects/compareforms/backend
+EnvironmentFile=/etc/compareforms/compareforms.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/sistemas201/projects/compareforms/backend/.venv/bin/uvicorn app.main:create_app --factory --host 127.0.0.1 --port 8015 --proxy-headers --forwarded-allow-ips=127.0.0.1 --limit-concurrency 8 --no-access-log
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+MemoryMax=2G
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/sistemas201/projects/compareforms/documents
+TimeoutStopSec=45
+
+[Install]
+WantedBy=multi-user.target

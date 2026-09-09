@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17.11
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: compareforms
+      POSTGRES_USER: compareforms
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configure .env.local}
+    ports:
+      - "127.0.0.1:54327:5432"
+    volumes:
+      - compareforms_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U compareforms -d compareforms"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  compareforms_pg:

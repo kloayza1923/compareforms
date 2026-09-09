@@ -1,0 +1,2790 @@
+{
+  "schema_version": "1.0",
+  "run_id": "20260904T223756Z-2738cb17",
+  "month": "2025_10",
+  "generated_at": "2026-09-04T22:37:56.644041+00:00",
+  "scope": "selected_indices",
+  "requested_indices": [
+    1
+  ],
+  "pair_count": 1,
+  "failure_count": 0,
+  "missing_before_indices": [],
+  "missing_after_indices": [],
+  "ignored_before": [],
+  "ignored_after": [],
+  "failures": [],
+  "comparisons": [
+    {
+      "index": 1,
+      "name_before": "ALMEIDA HIDROBO JEOFFRE ARNALDO",
+      "name_after": "ALMEIDA HIDROBO JEOFFRE ARNALDO",
+      "name_matches": true,
+      "identical": false,
+      "before": {
+        "filename": "1 - ALMEIDA HIDROBO JEOFFRE ARNALDO.pdf",
+        "sha256": "0710d5e2760779c27eddf18f378ec7c67f189b5a1f549b6fe9a2bd685dc1a59f",
+        "size_bytes": 13647397,
+        "page_count": 30,
+        "pages": [
+          {
+            "number": 1,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 4895,
+            "text_sha256": "d4a11a56ea47bd160e4eb7f563e4b4ef5aaed97da89ee723f38c3407bc730880",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 2,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 3862,
+            "text_sha256": "17da4da39a8cb4cb44193bf3770fe6fdde7ae61a0dbda24175ad90c262154da3",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 3,
+            "width_pt": 595.44,
+            "height_pt": 842.04,
+            "rotation": 0,
+            "text_chars": 332,
+            "text_sha256": "9051e8f756f423974393084edaaca026d22dfe71af16ac17fc00d39c1881ebda",
+            "text_source": "tesseract",
+            "ocr_confidence": "media",
+            "ocr_required": false
+          },
+          {
+            "number": 4,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 781,
+            "text_sha256": "4739ded11fe10d704e43a69a814050952cd35f584c026825f78d5cc8f74c60c7",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 5,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 2090,
+            "text_sha256": "563793e262b8d51d95992307952055b0cd430dcc741813fa825e2751b0ba8835",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 6,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 572,
+            "text_sha256": "bbe798be8ffca11e3b37aed3a0a2550d1db0e358b60147ed2cf9801f37fb17f9",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 7,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 2801,
+            "text_sha256": "f1327ce54e130aad10e0fcb471d401ee7bfa2d780fcd39b94a049d449c566b6c",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 8,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 1131,
+            "text_sha256": "76cd1f0ea0461546b6f2b6d7f64a0792e8344611a9a038a72c6e65acb5e16ef0",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 9,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1027,
+            "text_sha256": "e8e15f84dbab21f134d7472373a9ef6f8f0faaef8bfee9fdbfd81b7deaa88abd",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 10,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 2582,
+            "text_sha256": "8ff176dafc45f0602807dd0cfece658d125a19e663912ebf3c19728460b16572",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 11,
+            "width_pt": 612.0,
+            "height_pt": 792.0,
+            "rotation": 0,
+            "text_chars": 1972,
+            "text_sha256": "767e6b878bf9d665cdb00c79db4f5e7de36e0f701b7b5366c1f015ca55c5b2db",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 12,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1500,
+            "text_sha256": "75f55328ccbb8248875beb9f8c8feebbba54eb416fa0489b66506890270c8576",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 13,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 2032,
+            "text_sha256": "e03b6961766806398aec1d8358493098af7788260bcaa67bfd6041ab859d4ca2",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 14,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 3954,
+            "text_sha256": "157dd6477965bc22bc35c184c5cca434e72d0065eeada31a324bf7a3daa3b626",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 15,
+            "width_pt": 595.44,
+            "height_pt": 842.04,
+            "rotation": 0,
+            "text_chars": 332,
+            "text_sha256": "9051e8f756f423974393084edaaca026d22dfe71af16ac17fc00d39c1881ebda",
+            "text_source": "tesseract",
+            "ocr_confidence": "media",
+            "ocr_required": false
+          },
+          {
+            "number": 16,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 781,
+            "text_sha256": "4739ded11fe10d704e43a69a814050952cd35f584c026825f78d5cc8f74c60c7",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 17,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1724,
+            "text_sha256": "e1007f10ffa47f13b49c83ff3718a227bac084efc32f5374f7a0760855460f22",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 18,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 572,
+            "text_sha256": "bbe798be8ffca11e3b37aed3a0a2550d1db0e358b60147ed2cf9801f37fb17f9",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 19,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 2769,
+            "text_sha256": "ef831499f11677e760f0f5c8d3470bb00c76c5ad77319557651a6f2205e94bcf",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 20,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 1131,
+            "text_sha256": "76cd1f0ea0461546b6f2b6d7f64a0792e8344611a9a038a72c6e65acb5e16ef0",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 21,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 714,
+            "text_sha256": "ad797c4220a8aa67f8d34be8e3317f598e20b0b5ac9c03004adb90751d34beef",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 22,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 2634,
+            "text_sha256": "0c390507e7ef4c8f5d6beca5f3af802a527ba07458418d20aac34b327a7e8e3c",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 23,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1907,
+            "text_sha256": "83dcb02549c880b2a0b0ac0b4db9a4151b36c5c3eed1f6edc0096f382fbc5fcd",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 24,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1696,
+            "text_sha256": "d87e9c136b43b968481343ae6319ecac1238db837e16487896023719c4784b03",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 25,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1613,
+            "text_sha256": "cf34f27a64c5c69b2d2f4758d84484328ca20bddfbda0747a1f08ed07496c2b9",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 26,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1839,
+            "text_sha256": "ee0a5858a3f4ceb1171b13677a5812b0231afc7f87d28764fed8e6416e735443",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 27,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1761,
+            "text_sha256": "c91fde842173f8322283a42e0b3035836063d28ea86b571ac827b2e2c5e45e1c",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 28,
+            "width_pt": 612.0,
+            "height_pt": 792.0,
+            "rotation": 0,
+            "text_chars": 1972,
+            "text_sha256": "efa1eb0749da8bb5bb97fb99dc88e50df1f998cd0ae3d1fb5d11b1bfe8ddf7bd",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 29,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1411,
+            "text_sha256": "13690ba983d12f1a67d6a9816a44dbe9a181f9c7296b6b3bdb9afd90c763ccb2",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 30,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1719,
+            "text_sha256": "848abbb17ee0bbde6301d0360ed30849ea71915427c6df016c3eba5dcd1be024",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          }
+        ],
+        "text_chars": 54106,
+        "pages_requiring_ocr": [],
+        "pages_ocr_applied": [
+          3,
+          15
+        ],
+        "ocr_language": "spa",
+        "metadata": {
+          "producer": "dompdf <5113accd> + CPDF",
+          "creationdate": "D:20260903133020-05'00'",
+          "moddate": "D:20260903133020-05'00'",
+          "title": "PLANILLA PUBLICA",
+          "creator": "RICOH MP C307"
+        },
+        "signature_field_count": 0,
+        "warnings": []
+      },
+      "after": {
+        "filename": "1 - ALMEIDA HIDROBO JEOFFRE ARNALDO.pdf",
+        "sha256": "0da7d17cbef9ffec1538708ecdc7aaf7ae78c3f371b07569ed672118ea52a2c1",
+        "size_bytes": 20767700,
+        "page_count": 50,
+        "pages": [
+          {
+            "number": 1,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 4911,
+            "text_sha256": "63eebced5af578c8f87cc5c40df7eefaf7ca9a35c7e57f4b0dcb74ccb6ad430e",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 2,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 862,
+            "text_sha256": "8f45ddc1260b08da033339beec184e95ca1d04da6d1cc7271086e9c78c4af198",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 3,
+            "width_pt": 594.96,
+            "height_pt": 841.92,
+            "rotation": 0,
+            "text_chars": 343,
+            "text_sha256": "ce689e702119e89bef4162038dc79177e60102b6de3dbd1db748c2e4a5670fca",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 4,
+            "width_pt": 594.96,
+            "height_pt": 841.92,
+            "rotation": 0,
+            "text_chars": 39,
+            "text_sha256": "c625aa51914ff3f1958f56415c77a975931016c1ee131dccc478457d1a049527",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 5,
+            "width_pt": 596.0,
+            "height_pt": 845.0,
+            "rotation": 0,
+            "text_chars": 1975,
+            "text_sha256": "1def440c83ac5e40b40670e3c972a4f94c474cb3e9a489d85da7c51e58a15f6f",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 6,
+            "width_pt": 597.0,
+            "height_pt": 845.0,
+            "rotation": 0,
+            "text_chars": 1323,
+            "text_sha256": "588626dbf83c501dac63b9488a00ded7328d96980ded0bf2752be7bac1617a3b",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 7,
+            "width_pt": 596.0,
+            "height_pt": 845.0,
+            "rotation": 270,
+            "text_chars": 256,
+            "text_sha256": "806d52ad9c5aefec094f8e53cede8179dce0923a60097cef0fc4afa70161c99c",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 8,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 3443,
+            "text_sha256": "5d69847b2e724a7cb83b5c15a841738c096f6bf9825b03b972940784d1b7f87d",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 9,
+            "width_pt": 595.0,
+            "height_pt": 845.0,
+            "rotation": 0,
+            "text_chars": 1533,
+            "text_sha256": "5f2fa4989417034261b478081a676c0855db09d0e7bf20450a37a18cd16823b8",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 10,
+            "width_pt": 595.0,
+            "height_pt": 844.0,
+            "rotation": 0,
+            "text_chars": 2093,
+            "text_sha256": "a32a9f93c5f56b71136ebff19edb1f3b23ef99f0a35aaddd94b59ec3181c524a",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 11,
+            "width_pt": 596.0,
+            "height_pt": 846.0,
+            "rotation": 0,
+            "text_chars": 454,
+            "text_sha256": "d2b393d6abe2afbfd2aed38dc57ac2b68b298415d3eb6d3f594c596a1dbe53a1",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 12,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1785,
+            "text_sha256": "fc1c06c80ef0c39da97f90c71e7ab21a7a80a82da9f99dcfd4d732c46a6f984e",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 13,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 572,
+            "text_sha256": "bbe798be8ffca11e3b37aed3a0a2550d1db0e358b60147ed2cf9801f37fb17f9",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 14,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 2702,
+            "text_sha256": "51850e568601102eaf3b1d3f0f3e5ab4b090cd3e60903967154651596e0f91a9",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 15,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 1119,
+            "text_sha256": "57a0f37e11820584256b1fa347eecd81f2f7bf1a392c016d1bf59d368b735d02",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 16,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 796,
+            "text_sha256": "a4d2cba47215ce0ae2484e96fc4d12a00a6c806d2ea9aa5502390a753059552e",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 17,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 2608,
+            "text_sha256": "8c3ea557fc32a968f0f473a1a08d743f19c76e8938add97ab35c41e2ee4f3f2b",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 18,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1907,
+            "text_sha256": "d22e8d147a7fcf6948380d990f74b6e2578128c54f625129e7330fdadf7250e5",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 19,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1696,
+            "text_sha256": "35c6426ee562fb1f4b5fd145245d300134cdb47f2d41b1957b7af18e4c6c727e",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 20,
+            "width_pt": 612.0,
+            "height_pt": 792.0,
+            "rotation": 0,
+            "text_chars": 1940,
+            "text_sha256": "76f284914395ec0972d4a8677e3a44d577fb1a995a9ae44b72fb3d643ca2cdbf",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 21,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1420,
+            "text_sha256": "8fe690b6594855de1bca6a5a5b16000892f7b0a00d239887b63714f7be982627",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 22,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1719,
+            "text_sha256": "5371d1f3743050f890393b71bb3627a5c9fba389b38325ec81ad163c5ffc0950",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 23,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 862,
+            "text_sha256": "edc9455f7cdb74e888d5f31f33ea65c7ff77906e5010506f51d361bde5d7bcca",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 24,
+            "width_pt": 594.96,
+            "height_pt": 841.92,
+            "rotation": 0,
+            "text_chars": 342,
+            "text_sha256": "f1bef6200130bbb66b4f6e02797cb3f1d918de9b12fd971e87b69d5d40aae285",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 25,
+            "width_pt": 594.96,
+            "height_pt": 841.92,
+            "rotation": 0,
+            "text_chars": 39,
+            "text_sha256": "c625aa51914ff3f1958f56415c77a975931016c1ee131dccc478457d1a049527",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 26,
+            "width_pt": 595.0,
+            "height_pt": 846.0,
+            "rotation": 0,
+            "text_chars": 1757,
+            "text_sha256": "f6a199df5160d637e94e2dbfb0323d287c7a1a3d1f0916db6e1b41d922d74096",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 27,
+            "width_pt": 597.0,
+            "height_pt": 846.0,
+            "rotation": 0,
+            "text_chars": 827,
+            "text_sha256": "7366724de13e979e0050a31464de8b72bd6c336b013e5d90dcca9658f6667d2a",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 28,
+            "width_pt": 596.0,
+            "height_pt": 845.0,
+            "rotation": 270,
+            "text_chars": 99,
+            "text_sha256": "f89c158cdf2c647550d104ac0fa3d26e19b9d53e0478ddf5a710e03b3c55379f",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 29,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 3468,
+            "text_sha256": "f15c41f07058b83bd84dd7ffdd212a80dd362ddbd4fae376f198ed597eb09096",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 30,
+            "width_pt": 595.0,
+            "height_pt": 845.0,
+            "rotation": 0,
+            "text_chars": 1533,
+            "text_sha256": "5f2fa4989417034261b478081a676c0855db09d0e7bf20450a37a18cd16823b8",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 31,
+            "width_pt": 595.0,
+            "height_pt": 844.0,
+            "rotation": 0,
+            "text_chars": 2093,
+            "text_sha256": "a32a9f93c5f56b71136ebff19edb1f3b23ef99f0a35aaddd94b59ec3181c524a",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 32,
+            "width_pt": 596.0,
+            "height_pt": 846.0,
+            "rotation": 0,
+            "text_chars": 454,
+            "text_sha256": "d2b393d6abe2afbfd2aed38dc57ac2b68b298415d3eb6d3f594c596a1dbe53a1",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 33,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 2140,
+            "text_sha256": "97ef404c80ac877b499b1db17dd76ac926516523b2dbe3d59e70b2c7cede5518",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 34,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 572,
+            "text_sha256": "bbe798be8ffca11e3b37aed3a0a2550d1db0e358b60147ed2cf9801f37fb17f9",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 35,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 2712,
+            "text_sha256": "381efc2e4121578fc789423671f2bef473a242fd89c48bbb60ac60323338013f",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 36,
+            "width_pt": 841.89,
+            "height_pt": 595.28,
+            "rotation": 0,
+            "text_chars": 1119,
+            "text_sha256": "57a0f37e11820584256b1fa347eecd81f2f7bf1a392c016d1bf59d368b735d02",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 37,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1214,
+            "text_sha256": "461decb61926c360036010587e26a581903e0c1e63ee13921fad8d6f8927fb9f",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 38,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 2572,
+            "text_sha256": "bf929fb6984ef5aa6d2fc0c4f49ac164f5cb73d76c7ba3a5b684944e5adfb61c",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 39,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1613,
+            "text_sha256": "90bce99e936f916260a8951f0fcc447e1099c27969393cc7801497fb8c4541a8",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 40,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1839,
+            "text_sha256": "c41a50f426ad9e838fe8b68b929684cc3d5007d0490a17d50ffec9edab151e85",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 41,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1761,
+            "text_sha256": "0dc7e526a3680e5b888b232a39e72ca25a8c420bfedd920419fa523867925f2c",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 42,
+            "width_pt": 612.0,
+            "height_pt": 792.0,
+            "rotation": 0,
+            "text_chars": 1946,
+            "text_sha256": "017fad7e5cacd909d4c244f55e29ba8c1e10e9e70e1e05641ae85cfee0a93e9e",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 43,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1509,
+            "text_sha256": "d464781dc7449a8c13706ed40472e17aa2e22fa2d0f1988a040236ca7c407e4e",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 44,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 2032,
+            "text_sha256": "8c668d5a70246ac8d92abe100c9d1fd7f41fc04d579bd19d6966414449a97688",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 45,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 2055,
+            "text_sha256": "b8c49804519a1305dd5da4a1229951e4c3ad0ab328826a893cc850659818f3ef",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 46,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 1965,
+            "text_sha256": "ad8e9183076739f259e035e4b155e252dd5eb4d1bf692d37ff9f290d22de4e1b",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 47,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 2225,
+            "text_sha256": "af2a57bff0b12d75d78ea610c1901fcc73ca248edda3fdad28fb4598a6330e5c",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 48,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 3598,
+            "text_sha256": "4fdaffd1b2a3dd29ef944d68c980bc7845a8969049f36d59e2919cae7ee7b02d",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 49,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 3879,
+            "text_sha256": "1633d6650c59406a3c2acadd57920a2bf377b2c81ef3546c8892d70849850c08",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          },
+          {
+            "number": 50,
+            "width_pt": 595.28,
+            "height_pt": 841.89,
+            "rotation": 0,
+            "text_chars": 885,
+            "text_sha256": "2eb0eb51bed197e6c70b9a41a25f3a644ebffe651f407e89b6b39ca20d11d6f8",
+            "text_source": "embedded",
+            "ocr_confidence": null,
+            "ocr_required": false
+          }
+        ],
+        "text_chars": 82606,
+        "pages_requiring_ocr": [],
+        "pages_ocr_applied": [],
+        "ocr_language": "spa",
+        "metadata": {
+          "producer": "iText® 5.5.11 ©2000-2017 iText Group NV (AGPL-version)",
+          "creationdate": "D:20251127142210-05'00'",
+          "moddate": "D:20251127142210-05'00'"
+        },
+        "signature_field_count": 0,
+        "warnings": []
+      },
+      "page_delta": 20,
+      "size_delta_bytes": 7120303,
+      "text_diff": {
+        "tokens_before": 9822,
+        "tokens_after": 16682,
+        "tokens_added": 11919,
+        "tokens_deleted": 5059,
+        "tokens_unchanged": 4763,
+        "similarity_percent": 35.942,
+        "change_percent": 64.058,
+        "snippets": [
+          {
+            "operation": "insert",
+            "deleted": "",
+            "added": "( K635 ) POLIPO DEL COLON"
+          },
+          {
+            "operation": "replace",
+            "deleted": "22",
+            "added": "20"
+          },
+          {
+            "operation": "replace",
+            "deleted": "3000",
+            "added": "0000"
+          },
+          {
+            "operation": "replace",
+            "deleted": "30",
+            "added": "00"
+          },
+          {
+            "operation": "replace",
+            "deleted": "104",
+            "added": "95"
+          },
+          {
+            "operation": "replace",
+            "deleted": "50",
+            "added": "00"
+          },
+          {
+            "operation": "replace",
+            "deleted": "15",
+            "added": "14"
+          },
+          {
+            "operation": "replace",
+            "deleted": "6750",
+            "added": "2500"
+          },
+          {
+            "operation": "replace",
+            "deleted": "120",
+            "added": "118"
+          },
+          {
+            "operation": "replace",
+            "deleted": "18",
+            "added": "75"
+          },
+          {
+            "operation": "replace",
+            "deleted": "24",
+            "added": "22"
+          },
+          {
+            "operation": "replace",
+            "deleted": "0360",
+            "added": "0330"
+          },
+          {
+            "operation": "replace",
+            "deleted": "28",
+            "added": "27"
+          },
+          {
+            "operation": "replace",
+            "deleted": "40",
+            "added": "36"
+          },
+          {
+            "operation": "replace",
+            "deleted": "0600",
+            "added": "0540"
+          },
+          {
+            "operation": "replace",
+            "deleted": "46",
+            "added": "45"
+          },
+          {
+            "operation": "replace",
+            "deleted": "32",
+            "added": "20"
+          },
+          {
+            "operation": "replace",
+            "deleted": "1980",
+            "added": "1800"
+          },
+          {
+            "operation": "replace",
+            "deleted": "52",
+            "added": "50"
+          },
+          {
+            "operation": "replace",
+            "deleted": "4",
+            "added": "3"
+          },
+          {
+            "operation": "replace",
+            "deleted": "29",
+            "added": "90"
+          },
+          {
+            "operation": "replace",
+            "deleted": "6435",
+            "added": "5850"
+          },
+          {
+            "operation": "replace",
+            "deleted": "93",
+            "added": "88"
+          },
+          {
+            "operation": "replace",
+            "deleted": "01",
+            "added": "00"
+          },
+          {
+            "operation": "replace",
+            "deleted": "01",
+            "added": "00"
+          },
+          {
+            "operation": "replace",
+            "deleted": "76",
+            "added": "60"
+          },
+          {
+            "operation": "replace",
+            "deleted": "2640",
+            "added": "2400"
+          },
+          {
+            "operation": "replace",
+            "deleted": "02",
+            "added": "00"
+          },
+          {
+            "operation": "replace",
+            "deleted": "48",
+            "added": "42"
+          },
+          {
+            "operation": "replace",
+            "deleted": "04",
+            "added": "06"
+          }
+        ]
+      },
+      "page_details": [
+        {
+          "page_before": 1,
+          "page_after": 1,
+          "status": "matched_by_position",
+          "change_percent": 4.371,
+          "tokens_added": 55,
+          "tokens_deleted": 59,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "( K635 ) POLIPO DEL COLON"
+            },
+            {
+              "operation": "replace",
+              "deleted": "22",
+              "added": "20"
+            },
+            {
+              "operation": "replace",
+              "deleted": "3000",
+              "added": "0000"
+            },
+            {
+              "operation": "replace",
+              "deleted": "30",
+              "added": "00"
+            },
+            {
+              "operation": "replace",
+              "deleted": "104",
+              "added": "95"
+            }
+          ]
+        },
+        {
+          "page_before": 2,
+          "page_after": 2,
+          "status": "matched_by_position",
+          "change_percent": 96.158,
+          "tokens_added": 132,
+          "tokens_deleted": 669,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "SERVICIO GASTROENTEROLOGIA",
+              "added": "RED PÚBLICA INTEGRAL DE SALUD CONSULTA DE COBERTURA DE SALUD ALMEIDA HIDROBO JEOFFRE ARNALDO Número de documento de Identificación : 0952472330"
+            },
+            {
+              "operation": "replace",
+              "deleted": "Elaboración",
+              "added": "Cobertura de Seguro de Salud"
+            },
+            {
+              "operation": "replace",
+              "deleted": "2025-10-30 Área-Proceso : AUDITORIA MEDICA INFORME TÉCNICO-MÉDICO",
+              "added": "29 octubre 2025 IESS , ISSFA , ISSPOL Seguro Tipo de seguro Mensaje Registro de Cobertura de Atención de Salud IESS afiliado seguro general tiempo completo cédula encontrada en archivo hl si registra cobertura ISSFA no registra cobertura cedula o pasaporte no registrado no registra cobertura ISSPOL no registra cobertura . ciudadano no encon - trado no no registra cobertura * La información Histórica reflejada corresponde a datos desde Junio 2010 RED PRIV ADA COMPLEMENTARIA NO EXISTEN RESULTADOS"
+            },
+            {
+              "operation": "replace",
+              "deleted": "LA JUSTIFICACIÓN DE PRESTACIONES ADICIONALES A LAS AUTORIZADAS Página : 1 DATOS GENERALES NOMBRES Y APELLIDOS DE PACIENTE : JEOFFRE ARNALDO ALMEIDA HIDROBO CÉDULA DE IDENTIDAD : 0952472330 CÓDIGO DE VALIDACIÓN QUE AUTORIZÓ PRESTACIÓN : CPPSSG-03-08-2025-RPC-JKAS-19",
+              "added": "LOS PARÁMETROS INGRESADOS"
+            },
+            {
+              "operation": "replace",
+              "deleted": "INGRESO DEL PACIENTE",
+              "added": "consulta"
+            }
+          ]
+        },
+        {
+          "page_before": 3,
+          "page_after": 3,
+          "status": "matched_by_position",
+          "change_percent": 95.531,
+          "tokens_added": 68,
+          "tokens_deleted": 103,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "Í CEDULADE REPÚBLICA",
+              "added": "  DATOS"
+            },
+            {
+              "operation": "replace",
+              "deleted": "ECUADOR gd Nes Y ) DY ) A",
+              "added": "BENEFICIARIO Número de Documento : * 0952472330 Fecha * 29 / 10 / 2025 Ingrese el valor mostrado en la imagen : R cHK mf RUC de empresa Nombre del Financiador Identificación del Beneficiario"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "del Beneficiario Apellidos del Beneficiario No existen registros Consulta de datos Buscar Buscar     N"
+            },
+            {
+              "operation": "replace",
+              "deleted": ": = NS5ON NS SN 7 sy , EARL | 0 comio : A > = ee ÓN ¿ Y 77 Y RRE > DONT RARA Ly , = = 02 AGO 1984 1 , HOMBRE z . . , [ rado ñ a ber 1 < ECUO260170404 < < < < < 0952472330 : ws ” pr + + HEM 9408023M3205035ECU <",
+              "added": "e x is t e n R e g is t r o"
+            },
+            {
+              "operation": "delete",
+              "deleted": "I < < < < < < < < g EA A | - | ALMEIDA < HIDROBO < < JEOFFRE < ARNAL | NULO5Z472330 e mn | AAA",
+              "added": ""
+            }
+          ]
+        },
+        {
+          "page_before": 4,
+          "page_after": 4,
+          "status": "matched_by_position",
+          "change_percent": 97.97,
+          "tokens_added": 17,
+          "tokens_deleted": 176,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "Fecha : Guayaquil , 29 de Octubre del 2025 Fecha : Guayaquil , 29 de Octubre del 2025 Nombre : JEOFFRE ARNALDO ALMEIDA HIDROBO Nombre : JEOFFRE ARNALDO ALMEIDA HIDROBO CI . 0952472330 Edad : 32 años CI . 0952472330 Edad : 32 años Alergia : NO Alergia : NO Rp : Prescripción : Citas médicas Medios Digitales 042109180 - 0983753477 - 0991051413 / 0986637750 www . ieced . com . ec Av . Abel",
+              "added": "   N o e x is t e n"
+            },
+            {
+              "operation": "replace",
+              "deleted": ". Castillo",
+              "added": "e g is t r o"
+            },
+            {
+              "operation": "delete",
+              "deleted": "/ N y Av . Juan Tanca Marengo , Torre Médica I , mezanine 3 , y Torre Medica II , piso 4 , consultorios 405 - 406 , Ciudad del Sol ( Omnihospital ) @ Ieced Citas médicas Medios Digitales 042109180 - 0983753477 - 0991051413 / 0986637750 www . ieced . com . ec Av . Abel R . Castillo S / N y Av . Juan Tanca Marengo , Torre Médica I , mezanine 3 , y Torre Medica II , piso 4 , consultorios 405 - 406 , Ciudad del Sol ( Omnihospital ) @ Ieced",
+              "added": ""
+            }
+          ]
+        },
+        {
+          "page_before": 5,
+          "page_after": 5,
+          "status": "matched_by_position",
+          "change_percent": 97.345,
+          "tokens_added": 504,
+          "tokens_deleted": 376,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "• 1 I . oATos lm usu ^ Rio / usuAmA lvllNISTERIO DE SALUD PuBLICA ffijE = FORMiiiARlo DE REFERENaA , DERlvAa6N , coNTRAREFEftENaA v REFtRfNaA im / ERSA - Pate \" Acepkfo Mat . rro Nomb \" Fech . de b . dmLmto Edd Sco A \" E ! DA HLl'ROBO JEOFFRE AI ` h ~ ca I o8 I igoa cO eha 1 dfa I ri ` e ] I afro - 1gHCEM N - Pad culd . d . and . due oPupom L ` lp'd . - ca , 8 ' etrEtth Doom r , chtlth I EcuArm 09S2 - ¢ uAV ^ aurL | OURA . . I GUAV ^ miq . cOL ^ MLcO lone Ve , ' nst - I-tr Pal ) cedub aha dfro P"
+            },
+            {
+              "operation": "replace",
+              "deleted": "DATOS",
+              "added": "teanen eel aiaar ® c \" co Se \" racth de c8pacidad lrdada Chro5repefty : Co . imuuDAD of TFLATANtlnrTo pAaENit DE sExo MAscuimro DE 3o ARos aiJE AcuDE Ai cENTRo MEDlco AESMED POR cuAmo cuNlco DE 1 Aflo DE E \\ / oiuclchi cARACTERizADo POR DoioR ABDOMINAL iocauzADo • N EpicASTT ` io DoioR DE MODERADA iNTENslDAD + DisTENsioN ABDOMir \\ LAi con ABUNDANTE ExpuisioN DE FLATos + ALTERAcloN"
+            },
+            {
+              "operation": "replace",
+              "deleted": "ESTABLECIMIENTO",
+              "added": "f . ATFtoN EVAcuAroRio EN pERioDos oE cONSTipAcroN + TENESMO"
+            },
+            {
+              "operation": "replace",
+              "deleted": "USUARIO",
+              "added": "puio RECTAL RxDEABe \" E » CONCLUSION : ESTuO [ a NaRun ocoeRAFi ^ ^ BDoiui \\ LAL ID : ESTATOSIS HEPATICA GRADO I . sE INDicA ENDascopiA DlcEsiivA ALTA ENDacop . A GAST \" NTESTtw ^ i ~ \" RARA mAGAiesTco , INou"
+            },
+            {
+              "operation": "replace",
+              "deleted": "PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS 26699 DR",
+              "added": "yE EsoFAca , ESToiA ^ co v DLioDfNo try vEvuNo se6 ` /"
+            }
+          ]
+        },
+        {
+          "page_before": 6,
+          "page_after": 6,
+          "status": "matched_by_position",
+          "change_percent": 94.103,
+          "tokens_added": 301,
+          "tokens_deleted": 82,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "G",
+              "added": "| m , I-OJEmm O , P | , ARlae pecO ne - - AESMP flEOFFRE ^ RnAioo ALmaDA mDcoso M sO , ftos - 7tso Lc ^"
+            },
+            {
+              "operation": "replace",
+              "deleted": "COMPLICACIONES DEL PROCEDIMIENTO QUIRÚRGICO NO Pérdida Sanguínea total : ml Muestra : Descripción : H",
+              "added": "~ rraAlftumraT ` ot"
+            },
+            {
+              "operation": "replace",
+              "deleted": "EXÁMENES HISTOPATOLÓGICOS Transquirúrgico : Biopsia por congelación : SI NO Resultado : Patólogo que reporta : Histopatológico : SI",
+              "added": "rvTve colon ABcOMI NAL Bt-mo - I-rmco-pRocEDIMprm sckvcoaujaun ^ I GAS \" qrmroLouA Su cAwh I -"
+            },
+            {
+              "operation": "replace",
+              "deleted": "NO Muestra",
+              "added": "u - - a-ea NOpe 492as ENOOscOpIA GASTRomTEST7 ^ IAL ALTAPARAI ) IA6Ncx"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "Tico , [ NauyEsofiAGO , ESTOMA ¢ OyDuODENOy / averuNOsEGuni"
+            }
+          ]
+        },
+        {
+          "page_before": 7,
+          "page_after": 7,
+          "status": "matched_by_position",
+          "change_percent": 96.043,
+          "tokens_added": 171,
+          "tokens_deleted": 460,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "I C ' ? iii iEiii ` \\ - : I - \" Iin , 5l , , . > i • i3 • ` , ® ? \\ , Nt > = %"
+            },
+            {
+              "operation": "replace",
+              "deleted": ". DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 32 x FECHA 2025-10-30 TALLA 0 PESO KG 0 IMC GRUPO Y FACTOR CONSENTIMIENTO INFORMADO SI NO B . SERVICIO Y PRIORIDAD DE ATENCION DIAGNÓSTICO PREOPERATORI",
+              "added": "i ! ii l `"
+            },
+            {
+              "operation": "replace",
+              "deleted": "DROGAS ADMINISTRADAS",
+              "added": ": . . . \" ' : € + i • i ! 5 ! i ! ! ! • ii ! i ; i § § § § 35 _ ! ! ii a ) . - , = - fig rr , E , i . ' ? - ` ."
+            },
+            {
+              "operation": "replace",
+              "deleted": "PROPOFOL 200MG / 20ML",
+              "added": "= . - m ! i , a"
+            },
+            {
+              "operation": "replace",
+              "deleted": "300MG ) 2 FENTANILO 0 . 5MG / 10ML 3 OMEPRAZOL 40MG 4 LIDOCAINA S / E 2 % ( 5MG ) 5 ONDANSETRON 8MG / 4ML ( 4MG ) 6 N-BUTIL BROMURO DE HIOSCINA 20MG / ML ( 10MG ) 7 8 9 10 11 12 13 14 15 16",
+              "added": "! ! i i + + R = ` < `"
+            }
+          ]
+        },
+        {
+          "page_before": 8,
+          "page_after": 8,
+          "status": "matched_by_position",
+          "change_percent": 96.708,
+          "tokens_added": 531,
+          "tokens_deleted": 174,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "L",
+              "added": "SERVICIO GASTROENTEROLOGIA Fecha de Elaboración : 2025-10-29 Área-Proceso : AUDITORIA MEDICA INFORME TÉCNICO-MÉDICO PARA LA JUSTIFICACIÓN DE PRESTACIONES ADICIONALES A LAS AUTORIZADAS Página : 1 DATOS GENERALES NOMBRES Y APELLIDOS DE PACIENTE : JEOFFRE ARNALDO ALMEIDA HIDROBO CÉDULA DE IDENTIDAD : 0952472330 CÓDIGO DE VALIDACIÓN QUE AUTORIZÓ PRESTACIÓN : CPPSSG-03-08-2025-RPC-JKAS-18 FECHA DE INGRESO DEL PACIENTE : 2025-10-29 MÉDICO SOLICITANTE : ROBLES MEDRANDA CARLOS ANTONIO ESPECIALIDAD / SUB"
+            },
+            {
+              "operation": "replace",
+              "deleted": "TECNICAS ESPECIALES HEMODILUCIÓN AUTOTRANSFUSIÓN HIPOTENSÍON HIPOTERMIA CIRCULACIÓN EXTRACOPÓREA M",
+              "added": "LAB PRE QX OK APP : NIEGA APF : NIEGA APQX : CIRUGIA DE NARIZ ALERGIAS : NO Diagnostico : K295 GASTRITIS CRONICA , NO ESPECIFICADA Conclusion : - MUCOSA ECTOPICA GASTRICA - PANGASTROPATIA ERITEMATOSA LEVE PROTOCOLOS UTILIZADOS QUE JUSTIFICAN LA PRESTACIÓN ADICIONAL REALIZADA : NO"
+            },
+            {
+              "operation": "replace",
+              "deleted": "MANTENIMIENTO TEMPERATURA CORPORAL MANTA TERMICA CALENTAMIENTO DE FLUIDOS OTROS N",
+              "added": "PROTOCOLOS TIPO * ( SELECCIONE CON UNA X ) OBERVACIONESNAC INTERN"
+            },
+            {
+              "operation": "replace",
+              "deleted": "INCIDENTES ACTIVIDAD ELÉCTRICA SIN PULSO ARRITMIA ASISTOLIA TRMBOEMBOLIA HIPERTERMIA MALIGNA ANAFILAXIA ISQUEMIA MIOCÁRDICA NEUMOTÓRAX BRONCOESPASMO DESPERTAR PROLONGADO EMBOLIA AÉREA VENOSA LARINGOESPASMO DIFICULTAD",
+              "added": "MBE 1 PREVENCION , DIAGNOSTICO , TRATAMIENTO"
+            },
+            {
+              "operation": "replace",
+              "deleted": "TÉCNICA OTROS",
+              "added": "HEMORRAGIA AGUDADEL TUBO DIGESTIVA ALTO NO VARICEAL , EN LOS TRES NIVELES DE ATENCION X X CATALOGO MAESTRO ISSSTE-133-08 2 Guía de Práctica Clínica Diagnostico y Tratamiento del Adenocarcinoma Gástrico en Pacientes Adultos Evidencias y Recomendaciones Catalogo Maestro de Guías de Práctica Clínica : IMSS16709 X X 1 . Aapro MS , Grunberg SM , Manikhas GM et al . A phase III , doubleblind , randomized trial of palonosetron compared with ondansetron in preventing chemotherapyinduced nausea and vomit"
+            }
+          ]
+        },
+        {
+          "page_before": 9,
+          "page_after": 9,
+          "status": "matched_by_position",
+          "change_percent": 95.339,
+          "tokens_added": 290,
+          "tokens_deleted": 160,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "Paciente",
+              "added": "CRr ` - , - - > r ; C , ` , zap + _P , = 3 = i = F + ; = S ROBLES MEDRANDA CARLOS ANTONIO ACTA ENTREGA RECEPCI0N DE SERVICIOS DE SALUD PRESTADOR"
+            },
+            {
+              "operation": "delete",
+              "deleted": "ALMEIDA HIDROBO JEOFFRE ARNALDO Edad : 32 años Identificacion : 0952472330 Procedimiento : COLONOSCOPIA Referido por : ASMED Fecha : 29 / 10 / 2025 Hallazgos BAJO ANESTESIA GENERAL , CON TÈCNICA DE INMERSION EN SOLUCION SALINA ( USANDO 1000 cc APROX ) , SE INTRODUCE VIDEOCOLONOSCOPIO ACOPLADO A KIT DE PROCESADORA POR VIA RECTAL HASTA ILEON DISTAL QUE ENDOSCOPICAMENTE ENCONTRAMOS UN ISLOTE DE MUCOSA GRANULAR AISLADA . VALVULA ILEOCECAL Y CIEGO NORMALES , COLON ASCENDENTE NORMAL , COLON TRANSVERSO",
+              "added": ""
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "PERSONA DE CONTACTO : DR . CARLOS ANTONlo ROBLES MEDRANDA TELEFONO : 2109180 / EXT 0 E-MAIL : iecedbiop @ gmail . cc > m MES Y ANO DE PRESTACION : Octubre / 2025 CODIGO DE CIE 10 : NUMERO DE CODIGO DE VALIDACION : NUMERO DE HISTORIA CLINICA : 0952472330 SERVICIO ENTREGADO : AMBULATORIO ACUSE ENTREGA DEL SERVICIO OBSERVACIONES ( Si tuviera alguna observacl6n llene este campo , caso contrario deje en blanco ) Como prestador de la RPIS , conozco el cumplimiento obligatorio dol TPSNS y 8u8 procedirt"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "C . I . 1307189140 ACUSE RECEPCION DEL SERVICIO CERTIFICACION DE FIRMAS : En mi calic } ad de prestador de servicios , certifico que las firmas constantes en el presente documento , corresponden a la firma del paciente o representante de ser el caso , misma que fue receptada en este centre de atenci6n , por lo tanto me responsabilizo por contenido de dicho certificaclo , asumiendo toda la responsabilidad tanto administrativa civil o penal por la veracidad de la informaci6n entregada ."
+            }
+          ]
+        },
+        {
+          "page_before": 10,
+          "page_after": 10,
+          "status": "matched_by_position",
+          "change_percent": 94.037,
+          "tokens_added": 344,
+          "tokens_deleted": 413,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "- I-I ac = . 4a ` [ = L"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "= = i i = a E = a_ E ST ` ` 1 I ` ' ' ' ^ \" I ' ZbR"
+            },
+            {
+              "operation": "replace",
+              "deleted": "DATOS",
+              "added": "CARLoSANTONIOROBLESMEDRANDA Guayaquil , de octubre"
+            },
+            {
+              "operation": "replace",
+              "deleted": "ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO",
+              "added": "2025 AUTORIZAC16N PARA CIRUGIA , TRATAMIENTO CLiNICO 0 PROCEDIMIENTO D . AGN6STICO Autorizo al personal medico de este"
+            },
+            {
+              "operation": "replace",
+              "deleted": "NÚMERO",
+              "added": "para realizar las operaclohes quirurgicas , procedimlentos dlagn6sticos y tratamientos clinicos propuestos y necesarlos para el alivio o la recuperaci6n"
+            }
+          ]
+        },
+        {
+          "page_before": 11,
+          "page_after": 11,
+          "status": "matched_by_position",
+          "change_percent": 97.765,
+          "tokens_added": 165,
+          "tokens_deleted": 360,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "A",
+              "added": "FD € EDNUTt , 3ADDEm EiE-E = + ir + 9 - Nul"
+            },
+            {
+              "operation": "replace",
+              "deleted": "DATOS",
+              "added": "0952472330 REPU BuCA"
+            },
+            {
+              "operation": "replace",
+              "deleted": "ESTABLECIMIENTO USUARIO",
+              "added": "ECUADOR DmttcrfuGrm ^ i \" : REarmChni . rmmm ^ c ¢ hlycmAArmi APELLxpOs cONDcezaN ci ` mABArm ^ _ , JJ-Hirkun NOveFtEs Je - - nIAcbo . . Ai : LD . D : . : = ¥ - ` iuGAI ot veunERTo q - - . . p ? , „ u „ 6EXO H-to coc » turo Oaei7OcO FECi ¢ . DE vEnemevno 03 VAT ae32 NAT ¢ AN 5ce46a i , i + i \\ \\ fficAB ^ scaeieoFngsroErfu . r ` \\ ` figr # = ELREVAIAfu \\"
+            },
+            {
+              "operation": "replace",
+              "deleted": "PACIENTE INSTITUCIÓN DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NUMERO DE HISTORIA CLINICA NUMERO DE ARCHIVO No",
+              "added": "! ` ` L ( ( , / , : # faoucaceN % = r ' ` ` ` ` `"
+            },
+            {
+              "operation": "replace",
+              "deleted": "HOJA IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA",
+              "added": "/ i ; J , , f „ { J , ` , , , \" / , o-GENEm < <"
+            }
+          ]
+        },
+        {
+          "page_before": 12,
+          "page_after": 12,
+          "status": "matched_by_position",
+          "change_percent": 74.061,
+          "tokens_added": 257,
+          "tokens_deleted": 177,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "INSTITUCIÓN",
+              "added": "INSTITUCION"
+            },
+            {
+              "operation": "replace",
+              "deleted": "UNICÓDIGO",
+              "added": "UNICODIGO"
+            },
+            {
+              "operation": "delete",
+              "deleted": "No . HOJA",
+              "added": ""
+            },
+            {
+              "operation": "delete",
+              "deleted": "0952472330",
+              "added": ""
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "H"
+            }
+          ]
+        },
+        {
+          "page_before": 13,
+          "page_after": 13,
+          "status": "matched_by_position",
+          "change_percent": 82.921,
+          "tokens_added": 56,
+          "tokens_deleted": 313,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "G . COMPLICACIONES DEL PROCEDIMIENTO QUIRÚRGICO NO Pérdida Sanguínea total : ml Muestra : Descripción : H . EXÁMENES HISTOPATOLÓGICOS Transquirúrgico : Biopsia por congelación : SI NO Resultado : Patólogo que reporta : Histopatológico : SI X NO Muestra ; I . DIAGRAMA DEL PROCEDIMIENTO J ."
+            },
+            {
+              "operation": "replace",
+              "deleted": "USUARIO / PACIENTE PRIMER APELLIDO PRIMER NOMBRE EDAD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO ALMEIDA JEOFFRE 32 0952472330 E . RESUMEN DE TRATAMIENTO Y PROCEDIMIENTOS TERAPÉUTICOS BAJO ANESTESIA , CON TÈCNICA DE INMERSION EN CLORURO DE SODIO ( USANDO 1000 cc APROX ) , SE INTRODUCE VIDEOCOLONOSCOPIO ACOPLADO A CAP REVEAL 12 , 4 MM DESCARTABLE Y KIT DE PROCESADORA POR VIA RECTAL HASTA ILEON DISTAL QUE ENDOSCOPICAMENTE ENCONTRAMOS UN ISLOTE DE MUCOSA GRANULAR AISLADA . VALVULA ILEOCECAL",
+              "added": "PROFESIONAL RESPONSABLE"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "FIRMA"
+            },
+            {
+              "operation": "delete",
+              "deleted": "DEL PROFESIONAL PERÍODO DE RESPONSABILIDAD 1 .",
+              "added": ""
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "ROBLES MEDRANDA"
+            }
+          ]
+        },
+        {
+          "page_before": 14,
+          "page_after": 14,
+          "status": "matched_by_position",
+          "change_percent": 94.6,
+          "tokens_added": 408,
+          "tokens_deleted": 608,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "SERVICIO GASTROENTEROLOGIA Fecha",
+              "added": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA ESTABLECIMIENTO"
+            },
+            {
+              "operation": "replace",
+              "deleted": "Elaboración : 2025-10-29 Área-Proceso : AUDITORIA MEDICA INFORME TÉCNICO-MÉDICO PARA LA JUSTIFICACIÓN",
+              "added": "SALUD NÚMERO"
+            },
+            {
+              "operation": "replace",
+              "deleted": "PRESTACIONES ADICIONALES",
+              "added": "HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M"
+            },
+            {
+              "operation": "replace",
+              "deleted": "LAS AUTORIZADAS Página : 1 DATOS GENERALES NOMBRES Y APELLIDOS DE PACIENTE :",
+              "added": "ALMEIDA HIDROBO"
+            },
+            {
+              "operation": "replace",
+              "deleted": "ALMEIDA HIDROBO CÉDULA",
+              "added": "Masculino 31 02 08 1994 FECHA 2025-10-29 TALLA 0 PESO KG 0 IMC GRUPO Y FACTOR SI NO B . SERVICIO Y PRIORIDAD"
+            }
+          ]
+        },
+        {
+          "page_before": 15,
+          "page_after": 15,
+          "status": "matched_by_position",
+          "change_percent": 97.887,
+          "tokens_added": 174,
+          "tokens_deleted": 104,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "Í CEDULADE REPÚBLICA",
+              "added": "K . TIEMPOS TRANSCURRIDOS DURACION ANESTESIA 00 : 30 : 00 DURACION CIRUGIA 00 : 30 : 00 L . TECNICAS ESPECIALES HEMODILUCIÓN AUTOTRANSFUSIÓN HIPOTENSÍON HIPOTERMIA CIRCULACIÓN EXTRACOPÓREA M . MANTENIMIENTO TEMPERATURA CORPORAL MANTA TERMICA CALENTAMIENTO DE FLUIDOS OTROS N . INCIDENTES ACTIVIDAD ELÉCTRICA SIN PULSO ARRITMIA ASISTOLIA TRMBOEMBOLIA HIPERTERMIA MALIGNA ANAFILAXIA ISQUEMIA MIOCÁRDICA NEUMOTÓRAX BRONCOESPASMO DESPERTAR PROLONGADO EMBOLIA AÉREA VENOSA LARINGOESPASMO DIFICULTAD DE LA "
+            },
+            {
+              "operation": "replace",
+              "deleted": "ECUADOR gd Nes",
+              "added": "PROFESIONAL RESPONSABLE HORA 18 : 30 : 00 NOMBRE"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "APELLIDO DEL PROFESIONAL ARRIETA BRICEÑO ANGELICA MARIA FIRMA SELLO Y CÓDIGO Dra . ARRIETA BRICEÑO ANGELICA MARIA ANESTESIOLOGIA Cedula No . 1759345422 SNS-MSP / HCU-form . 018A / 2021 TRANSANESTÉSICO ( 2"
+            },
+            {
+              "operation": "delete",
+              "deleted": "DY ) A NOMBRES o : = NS5ON NS SN 7 sy , EARL | 0 comio : A > = ee ÓN ¿ Y 77 Y RRE > DONT RARA Ly , = = 02 AGO 1984 1 , HOMBRE z . . , [ rado ñ a ber 1 < ECUO260170404 < < < < < 0952472330 : ws ” pr + + HEM 9408023M3205035ECU < S I < < < < < < < < g EA A | - | ALMEIDA < HIDROBO < < JEOFFRE < ARNAL | NULO5Z472330 e mn | AAA",
+              "added": ""
+            }
+          ]
+        },
+        {
+          "page_before": 16,
+          "page_after": 16,
+          "status": "matched_by_position",
+          "change_percent": 92.216,
+          "tokens_added": 143,
+          "tokens_deleted": 165,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "Paciente : ALMEIDA HIDROBO JEOFFRE ARNALDO Edad : 31 años Identificacion : 0952472330 Procedimiento : ENDOSCOPIA DIGESTIVA ALTA + BIOPSIA Referido por : IESS"
+            },
+            {
+              "operation": "replace",
+              "deleted": "Guayaquil",
+              "added": "29 / 10 / 2025 Hallazgos BAJO ANESTESIA SE INTRODUCE VIDEOENDOSCOPIO POR VIA ORAL . EL ESOFAGO A LOS 25 CM DE LOS INCISIVOS SE ENCONTRO MUCOSA ECTOPICA GASTRICA . EL CAMBIO MUCOSO SE SITUA A LOS 39 CMS DE LOS INCISIVOS . EL ESTOMAGO MUESTRA EL TECHO NORMAL"
+            },
+            {
+              "operation": "replace",
+              "deleted": "29",
+              "added": "EL CUERPO ERITEMA . EL ANTRO PRESENTA ERITEMA . EL BULBO ESTA NORMAL . LA SEGUNDA PORCION SIN LESIONES . SE TOMA BIOPSIA CON Pinza"
+            },
+            {
+              "operation": "replace",
+              "deleted": "Octubre del 2025 Fecha : Guayaquil",
+              "added": "Biopsia Estandar 2 . 3mm"
+            },
+            {
+              "operation": "replace",
+              "deleted": "29 de Octubre del 2025 Nombre : JEOFFRE ARNALDO ALMEIDA HIDROBO Nombre : JEOFFRE ARNALDO ALMEIDA HIDROBO CI . 0952472330 Edad : 32 años CI . 0952472330 Edad : 32 años Alergia : NO Alergia : NO Rp : Prescripción : Citas médicas Medios Digitales 042109180 - 0983753477 - 0991051413 / 0986637750 www . ieced . com . ec Av . Abel R . Castillo",
+              "added": "Long 2300 ,"
+            }
+          ]
+        },
+        {
+          "page_before": 17,
+          "page_after": 17,
+          "status": "matched_by_position",
+          "change_percent": 72.222,
+          "tokens_added": 326,
+          "tokens_deleted": 220,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "FECHA DE NACIMIENTO"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "1994-08-02"
+            },
+            {
+              "operation": "replace",
+              "deleted": "32",
+              "added": "31"
+            },
+            {
+              "operation": "replace",
+              "deleted": "DIAGNÓSTICOS",
+              "added": "DATOS DEL SERVICIO Y PRIORIDAD SERVICIO ESPECIALIDAD PRIORIDAD HORA DE TOMA FECHA DE TOMA EMERGENCIA CONSULTA EXTERNA HOSPITALIZACIÓN GASTROENTEROLOGO URGENTE RUTINA X 29 / 10 / 2025 C . ESTUDIO SOLICITADO HISTOPATOLOGÍA X CITOLOGÍA REVISIÓN DE LAMINILLAS TRANSOPERATORIO OTROS TIPO DE ESTUDIO : DESCRIPCIÓN SE TOMA BIOPSIA DE ANTRO Y CUERPO GASTRICO D . RESUMEN CLÍNICO REGISTRAR DE MANERA OBLIGATORIA TODOS LOS CAMPOS CUADRO CLÍNICO PACIENTE MASCULINO DE 31 AÑOS DE EDAD , PACIENTE REFIERE CUADRO C"
+            },
+            {
+              "operation": "replace",
+              "deleted": "Post Operatorio :",
+              "added": "PRE DEF F . MUESTRA O PIEZA / NUMERO DESCRIBIR EL ORIGEN Y NUMERO DE MUESTRAS ENVIADAS"
+            }
+          ]
+        },
+        {
+          "page_before": 18,
+          "page_after": 18,
+          "status": "matched_by_position",
+          "change_percent": 89.664,
+          "tokens_added": 273,
+          "tokens_deleted": 74,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 31 02 08 1994 B . DATOS DEL SERVICIO ESTABLECIMIENTO DE SALUD SOLCIITANTE PROFESIONAL SOLICITANTE ESPECIALIDAD CÓDIGO INTERNO DE MUES"
+            },
+            {
+              "operation": "replace",
+              "deleted": "COMPLICACIONES DEL PROCEDIMIENTO QUIRÚRGICO NO Pérdida Sanguínea total : ml Muestra : Descripción :",
+              "added": "RECOMENDACIONES"
+            },
+            {
+              "operation": "delete",
+              "deleted": ". EXÁMENES HISTOPATOLÓGICOS Transquirúrgico : Biopsia por congelación : SI NO Resultado : Patólogo que reporta : Histopatológico : SI X NO Muestra ; I . DIAGRAMA DEL PROCEDIMIENTO J",
+              "added": ""
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "FECHA ( aaaa-mm-dd ) HORA ( hh : mm ) PRIMER"
+            },
+            {
+              "operation": "replace",
+              "deleted": "Y APELLIDOS ESPECIALIDAD FIRMA SELLO Y",
+              "added": "PRIMER APELLIDO SEGUNDO APELLIDO"
+            }
+          ]
+        },
+        {
+          "page_before": 19,
+          "page_after": 19,
+          "status": "matched_by_position",
+          "change_percent": 75.346,
+          "tokens_added": 179,
+          "tokens_deleted": 365,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "UNICODIGO"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "26699"
+            },
+            {
+              "operation": "replace",
+              "deleted": "32 x FECHA 2025-10-29 TALLA 0 PESO KG 0 IMC GRUPO Y FACTOR CONSENTIMIENTO INFORMADO SI NO",
+              "added": "31 02 08 1994"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "DATOS DEL"
+            },
+            {
+              "operation": "replace",
+              "deleted": "Y PRIORIDAD",
+              "added": "ESTABLECIMIENTO"
+            }
+          ]
+        },
+        {
+          "page_before": 20,
+          "page_after": 20,
+          "status": "matched_by_position",
+          "change_percent": 88.665,
+          "tokens_added": 330,
+          "tokens_deleted": 155,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "L",
+              "added": "A"
+            },
+            {
+              "operation": "replace",
+              "deleted": "TECNICAS ESPECIALES HEMODILUCIÓN AUTOTRANSFUSIÓN HIPOTENSÍON HIPOTERMIA CIRCULACIÓN EXTRACOPÓREA",
+              "added": "DATOS DEL ESTABLECIMIENTO USUARIO / PACIENTE INSTITUCIÓN DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NUMERO DE HISTORIA CLINICA NUMERO DE ARCHIVO No . HOJA IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 31 02 08 1994 B"
+            },
+            {
+              "operation": "replace",
+              "deleted": "MANTENIMIENTO TEMPERATURA CORPORAL MANTA TERMICA CALENTAMIENTO",
+              "added": "EVOLUCIÓN Y PRESCRIPCIONES FIRMAR AL PIE"
+            },
+            {
+              "operation": "replace",
+              "deleted": "FLUIDOS OTROS N",
+              "added": "CADA EVOLUCIÓN Y PREESCRIPCIÓN REGISTRAR CON ROJO LA ADMINISTRACIÓN DE FARMACOS Y COLOCACIÓN DE DISPOSITIVOS MÉDICOS 1"
+            }
+          ]
+        },
+        {
+          "page_before": 21,
+          "page_after": 21,
+          "status": "matched_by_position",
+          "change_percent": 87.5,
+          "tokens_added": 213,
+          "tokens_deleted": 109,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO /"
+            },
+            {
+              "operation": "replace",
+              "deleted": ":",
+              "added": "INSTITUCIÓN DEL SISTEMA UNICÓDIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO No . HOJA IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) D H M A"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "MASCULINO 31 02 08 1994 B . RESUMEN DE CUADRO CLINICO PACIENTE MASCULINO DE 31 AÑOS DE"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": ", PACIENTE REFIERE CUADRO CLINICO DE 6 MESES DE EVOLUCION DE EPIGATSRAGIA URENTE EN OCASIONES , GASES MAS PATRON EVACUTORIO MIXTO ENTR EEXTRÑIMIENTO Y HECES PASTOSAS , REALIZA CADA 2 DIAS EVACUACIONES , SENSACION DE EVACUCION IMCOMPLETA NIEGA MOCO O SANGRE EN LAS HECES NIEGA PERDIDA DE PESO , PRIMERA VEZ ESTDUIOS ENDOSCOPICOS . LAB PRE QX OK APP"
+            },
+            {
+              "operation": "replace",
+              "deleted": "32 años Identificacion",
+              "added": "NIEGA APF"
+            }
+          ]
+        },
+        {
+          "page_before": 22,
+          "page_after": 22,
+          "status": "matched_by_position",
+          "change_percent": 85.294,
+          "tokens_added": 248,
+          "tokens_deleted": 390,
+          "snippets": [
+            {
+              "operation": "delete",
+              "deleted": "A .",
+              "added": ""
+            },
+            {
+              "operation": "delete",
+              "deleted": "ESTABLECIMIENTO Y",
+              "added": ""
+            },
+            {
+              "operation": "replace",
+              "deleted": "INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD",
+              "added": "PRIMER APELLIDO PRIMER NOMBRE EDAD"
+            },
+            {
+              "operation": "replace",
+              "deleted": "IESS 26699",
+              "added": "ALMEIDA JEOFFRE 31 0952472330 E . RESUMEN DE TRATAMIENTO Y PROCEDIMIENTOS TERAPÉUTICOS BAJO ANESTESIA SE INTRODUCE VIDEOENDOSCOPIO POR VIA ORAL . EL ESOFAGO A LOS 25 CM DE LOS INCISIVOS SE ENCONTRO MUCOSA ECTOPICA GASTRICA . EL CAMBIO MUCOSO SE SITUA A LOS 39 CMS DE LOS INCISIVOS . EL ESTOMAGO MUESTRA EL TECHO NORMAL , EL CUERPO ERITEMA . EL ANTRO PRESENTA ERITEMA . EL BULBO ESTA NORMAL . LA SEGUNDA PORCION SIN LESIONES . SE TOMA BIOPSIA CON Pinza de Biopsia Estandar 2 . 3mm , Long 2300 , S / Ag"
+            },
+            {
+              "operation": "replace",
+              "deleted": "0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE FECHA DE NACIMIENTO SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO 1994-08-02 Masculino 32 X B",
+              "added": "GASTROENTEROLOGO Dr"
+            }
+          ]
+        },
+        {
+          "page_before": 23,
+          "page_after": 23,
+          "status": "matched_by_position",
+          "change_percent": 93.197,
+          "tokens_added": 133,
+          "tokens_deleted": 278,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO",
+              "added": "RED PÚBLICA INTEGRAL"
+            },
+            {
+              "operation": "replace",
+              "deleted": "NÚMERO",
+              "added": "CONSULTA"
+            },
+            {
+              "operation": "replace",
+              "deleted": "HISTORIA CLÍNICA ÚNICA NÚMERO",
+              "added": "COBERTURA"
+            },
+            {
+              "operation": "replace",
+              "deleted": "ARCHIVO IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A",
+              "added": "SALUD"
+            },
+            {
+              "operation": "delete",
+              "deleted": "Masculino 32 02 08 1994 B . DATOS DEL SERVICIO ESTABLECIMIENTO DE SALUD SOLCIITANTE PROFESIONAL SOLICITANTE ESPECIALIDAD CÓDIGO INTERNO DE MUESTRA DE ANATOMÍA PATOLÓGICA ROBLES MEDRANDA CARLOS ANTONIO ROBLES MEDRANDA CARLOS ANTONIO GASTROENTEROLOGO 13357 C . DESCRIPCIÓN MACROSCÓPICA SE RECIBE 1 FRAGMENTO DE TEJIDO BLANQUECINO BLANDO QUE MIDE 0 . 4CM . SE PROCESA TODO EN 1 CASETE . NOMBRE DEL PROFESIONAL RESPONSABLE DE LA MACROSCOPIA IVETT CARIDAD MANZANARES LAGUARDIA C . DESCRIPCIÓN MICROSCÓPICA",
+              "added": ""
+            }
+          ]
+        },
+        {
+          "page_before": 24,
+          "page_after": 24,
+          "status": "matched_by_position",
+          "change_percent": 95.87,
+          "tokens_added": 64,
+          "tokens_deleted": 261,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "A .",
+              "added": " "
+            },
+            {
+              "operation": "replace",
+              "deleted": "ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 32 02 08 1994 B . DATOS DEL SERVICIO ESTABLECIMIENTO DE SALUD SOLCIITANTE PROFESIONAL SOLICITANTE ESPECIALIDAD CÓDIGO INTERNO DE MUESTRA DE ANATOMÍ",
+              "added": "BENEFICIARIO"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": ": * 0952472330 Fecha * 30 / 10 / 2025 Ingrese el valor mostrado en la imagen : r Xh00z RUC"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "empresa Nombre del Financiador"
+            },
+            {
+              "operation": "replace",
+              "deleted": "FIRMA SELLO 1755217153 SNS-MSP / HCU-form . 013B / 2021 ANATOMÍA PATOLÓGICA - INFORME",
+              "added": "del Beneficiario Nombres del Beneficiario Apellidos del Beneficiario No existen registros Consulta de datos Buscar Buscar     N o e x is t e n R e g is t r o s"
+            }
+          ]
+        },
+        {
+          "page_before": 25,
+          "page_after": 25,
+          "status": "matched_by_position",
+          "change_percent": 98.502,
+          "tokens_added": 17,
+          "tokens_deleted": 246,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 32 02 08 1994 B . DATOS DEL SERVICIO ESTABLECIMIENTO DE SALUD SOLCIITANTE PROFESIONAL SOLICITANTE ESPECIALIDAD CÓDIGO INTERNO DE MUES",
+              "added": "   N o"
+            },
+            {
+              "operation": "replace",
+              "deleted": ". INFORME DE CITOLOGÍA VAGINAL CLASIFICACIÓN BETHESDA NORMAL LIE BAJO LIE ALTO CA MUESTRA INADECUADA HONGOS ERITROCITOS FLORA BACTERIANA HISTIOCITOS NÚMERO DE MUESTRA FECHA DE PROCESO OBSERVACIONES F . DIAGNÓSTICO - HIPERPLASIA LINFOIDE REACTIVA .",
+              "added": "x is t e n R e"
+            },
+            {
+              "operation": "replace",
+              "deleted": ". RECOMENDACIONES H . DATOS DEL PROFESIONAL RESPONSABLE FECHA ( aaaa-mm-dd ) HORA ( hh : mm ) PRIMER NOMBRE PRIMER APELLIDO SEGUNDO APELLIDO 2025-11-10 IVETT MANZANARES LAGUARDIA NÚMERO DE DOCUMENTO DE IDENTIFICACIÓN FIRMA SELLO 1755217153 SNS-MSP / HCU-form . 013B / 2021 ANATOMÍA PATOLÓGICA - INFORME",
+              "added": "is t r o s"
+            }
+          ]
+        },
+        {
+          "page_before": 26,
+          "page_after": 26,
+          "status": "matched_by_position",
+          "change_percent": 96.267,
+          "tokens_added": 452,
+          "tokens_deleted": 270,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "i . OAice OIL ` rsuARio / usu ^ raA MINISTERIO DE SALUD PuBLICA il , jEE FORMulARio DE REFERENclA , DERrvAa6N , cOwTRAREFERENCIA y RgivREra ^ I » veRSA Apedkk > p4 ~ - oN - N - Fech . d . N . dfltfro Eded Sco ALMEica MIDROBO JEofFRE AFt ~ or I o8 I isoa 30 aha 1 db I ri . e . I aha a - 1eH \" - P , t , cald . de a ~ oPaapert , Lard . roskkrfu - I tlr-I - N . Tdkrf6in I Eel - - GLiAVAonl Oti \" I GUA , nub - MucOLm aE-Ver'ns - mcrfur pab cedufa dla dgiv p ~ a I Cantch Panqufa cblle pthcpel y scanda"
+            },
+            {
+              "operation": "replace",
+              "deleted": "DATOS",
+              "added": "the lrrfu-l - En ` qu del6toa I llbt ` a / ride ve . I Establechtontodoschd I Ttpo I DLTh / Area qs5 I oosaoz3so I ^ ESA . EI ) I | | I Dorfu - o1 - , : Fcdu IEss I I plurrmMIENiti | GAsnoENitROLOGiA og I o7 I 2a25 Enthid"
+            },
+            {
+              "operation": "replace",
+              "deleted": "ESTABLECIMIENTO Y USUARIO",
+              "added": "sBtema | E5cablecinledeo d ® S3lrd | Servido | E5pecLanoad db I n . es I afo 2J ± ee D Ce ± a D ~ umeda capackl . d re . olithra I Auscrde tempord dd profolorLal 2 FBtodeprfuwh 3 3 . hamen eel arfu ~ Saturatfro do capaedad lrrdada -"
+            },
+            {
+              "operation": "replace",
+              "deleted": "PACIENTE INSTITUCION",
+              "added": "E5pecfflque : coar \" iuDAD D € TR ^ TAAiLEWT \\ o pAaE ^ rTE DE sExo MAscuLiNo DE 3o Aftos QUE AcuDE AL cENTRo MEDlco AESMED roR cuADRo cLJNlco DE 1 Aflo DE EvoLuaoN cARACTERRADo POR DOLen ABDOMINAL rocAuzAco EN EI . iGASTRro DoroR DE MODERADA INTENsioAD + DisTENslot \\ I ABDOMINAL cow ABUNDANTE Exp ` JrsioN DE FLAios + ALTERAcioN DEi PATRON EVAciiATORro EN pEAioDos oE coNsnpAcloN + TENESMo v puJo RECTAL RXOE-CONclusION : ESTUDia NaRMAiECoG8 ^ FIA ^ BDoimN ^ L u ) : ESTATC \" S HEPATICA GRADO I . S"
+            },
+            {
+              "operation": "replace",
+              "deleted": "SISTEMA UNICODIGO ESTABLECIMIENTO",
+              "added": "stnona I H & Clfroc @ No . | Esobleclmlento"
+            }
+          ]
+        },
+        {
+          "page_before": 27,
+          "page_after": 27,
+          "status": "matched_by_position",
+          "change_percent": 96.38,
+          "tokens_added": 161,
+          "tokens_deleted": 265,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "esaco cDioNescopIA , FiExiBiE , paoxiMAL AL ANG uLo ESpLfal ¢ Co , Di ^ Gmosnca , Cow o Sin Tohm D £ « UESTRAS , PaR Cf prlLADo"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "LAVADo , cow BropsiA , oNica o MOLTipiE"
+            },
+            {
+              "operation": "replace",
+              "deleted": "DATOS DEL ESTABLECIMIENTO",
+              "added": "pACLENit DE sExo MAscuuNo DE 3o Aflos owe AcuDE Ai cEN \" o MEDico AESMED POR cuADFto cuNtco DE 1 Aflo DE : EvoLuaow cARACTfRlzADo POR coioR ABcoMiNAL LOOuzAcoENEplGASTRIODoioRDEMODERADAINiENslDAD + I ) isTusloNABDOMINAicoNABUNDANItExpui5ioh | DEFLATas + ALTERAc ! Owl ] EipATRONEVAcuATORIOEN PERlocos DE CONSTll'ActoN + TENESMO"
+            },
+            {
+              "operation": "replace",
+              "deleted": "USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO",
+              "added": "PuJO RECTAL Rx Ot AaeMEN CONCIUSION : ESTU DID NOI \" AL EcoGaAFIAABi > oMII \\ iAL Ii ) : ESTATceB HEPATicA GRAoo I . St mi ) ! cA coioNoSCoPIA 453cO coioNOscopiA , FLExlBLE , proxiMAi AI rfuGiiio EspL £ Nico , DLAGNOsTicA , CON a siN TOMA"
+            },
+            {
+              "operation": "replace",
+              "deleted": "SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS 26699 DR",
+              "added": "MUE5TRAs , pop cEpiiLADO a iAVADO , cool BiopsLA , oNlcA a Mt ) LTlpiE"
+            }
+          ]
+        },
+        {
+          "page_before": 28,
+          "page_after": 28,
+          "status": "matched_by_position",
+          "change_percent": 98.571,
+          "tokens_added": 51,
+          "tokens_deleted": 363,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "I ? ! ii iEi ! ! I § 5 a8ro + iN 8a 5 : i ! F ! 9 • 8a 9 = § ? iii ii ! iii , , JL Ch cO CO a ( , ' 1i ' ` , i - \\"
+            },
+            {
+              "operation": "replace",
+              "deleted": "DATOS DEL ESTABLECIMIENTO USUARIO / PACIENTE INSTITUCIÓN DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NUMERO DE HISTORIA CLINICA NUMERO DE ARCHIVO No . HOJA IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 32 x B . EVOLUCIÓN Y PRESCRIPCIONES FIRMAR AL PIE DE CADA EVOLUCIÓN Y PREESCRIPCIÓN REGISTRAR CON ROJO LA ADMINISTRACIÓN DE FARMACOS Y ",
+              "added": "= # 5"
+            },
+            {
+              "operation": "delete",
+              "deleted": "mm - dd ) HORA ( hh : mm ) NOTAS DE EVOLUCIÓN FARMACOTERAPIA E INDICACIONES ( Para enfermería y otro profesional de salud ) ADMINISTR . FARMACOS DISPOSITIVOS 29 / 10 / 2025 16 : 00 PACIENTE MASCULINO DE 31 AÑOS DE EDAD , PACIENTE REFIERE CUADRO CLINICO DE 6 MESES DE EVOLUCION DE EPIGATSRAGIA URENTE EN OCASIONES , GASES MAS PATRON EVACUTORIO MIXTO ENTR EEXTRÑIMIENTO Y HECES PASTOSAS , REALIZA CADA 2 DIAS EVACUACIONES , SENSACION DE EVACUCION IMCOMPLETA NIEGA MOCO O SANGRE EN LAS HECES NIEGA PERDI",
+              "added": ""
+            }
+          ]
+        },
+        {
+          "page_before": 29,
+          "page_after": 29,
+          "status": "matched_by_position",
+          "change_percent": 76.989,
+          "tokens_added": 489,
+          "tokens_deleted": 140,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "SERVICIO GASTROENTEROLOGIA Fecha de Elaboración : 2025-10-30 Área-Proceso : AUDITORIA MEDICA INFORME TÉCNICO-MÉDICO PARA LA JUSTIFICACIÓN DE PRESTACIONES ADICIONALES"
+            },
+            {
+              "operation": "replace",
+              "deleted": ".",
+              "added": "LAS AUTORIZADAS Página : 1"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "GENERALES NOMBRES Y APELLIDOS DE PACIENTE : JEOFFRE ARNALDO ALMEIDA HIDROBO CÉDULA DE IDENTIDAD : 0952472330 CÓDIGO DE VALIDACIÓN QUE AUTORIZÓ PRESTACIÓN : CPPSSG-03-08-2025-RPC-JKAS-19 FECHA DE INGRESO"
+            },
+            {
+              "operation": "delete",
+              "deleted": "ESTABLECIMIENTO Y USUARIO /",
+              "added": ""
+            },
+            {
+              "operation": "replace",
+              "deleted": "INSTITUCIÓN DEL SISTEMA UNICÓDIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO No . HOJA IESS 26699 DR .",
+              "added": ": 2025-10-30 MÉDICO SOLICITANTE : ROBLES MEDRANDA"
+            }
+          ]
+        },
+        {
+          "page_before": 30,
+          "page_after": 30,
+          "status": "matched_by_position",
+          "change_percent": 92.053,
+          "tokens_added": 277,
+          "tokens_deleted": 279,
+          "snippets": [
+            {
+              "operation": "replace",
+              "deleted": "DATOS DEL USUARIO / PACIENTE PRIMER APELLIDO PRIMER NOMBRE EDAD NÚMERO",
+              "added": "CRr ` - , - - > r ; C , ` , zap + _P , = 3 = i = F + ; = S ROBLES MEDRANDA CARLOS ANTONIO ACTA ENTREGA RECEPCI0N"
+            },
+            {
+              "operation": "replace",
+              "deleted": "HISTORIA CLÍNICA ÚNICA NÚMERO",
+              "added": "SERVICIOS"
+            },
+            {
+              "operation": "replace",
+              "deleted": "ARCHIVO ALMEIDA JEOFFRE 32 0952472330 E . RESUMEN DE TRATAMIENTO Y PROCEDIMIENTOS TERAPÉUTICOS BAJO ANESTESIA SE INTRODUCE VIDEOENDOSCOPIO POR VIA ORAL . EL ESOFAGO A LOS 25 CM DE LOS INCISIVOS SE ENCONTRO MUCOSA ECTOPICA GASTRICA . EL CAMBIO MUCOSO SE SITUA A LOS 39 CMS DE LOS INCISIVOS . EL ESTOMAGO MUESTRA EL TECHO NORMAL , EL CUERPO ERITEMA . EL ANTRO PRESENTA ERITEMA . EL BULBO ESTA NORMAL . LA SEGUNDA PORCION SIN LESIONES . SE TOMA BIOPSIA CON Pinza de Biopsia Estandar 2 . 3mm , Long 2300 ",
+              "added": "SALUD PRESTADOR :"
+            },
+            {
+              "operation": "replace",
+              "deleted": "GASTROENTEROLOGO Dr . ROBLES MEDRANDA CARLOS ANTONIO GASTROENTEROLOGO Cedula No . 1307189140 J . DATOS DEL PROFESIONAL RESPONSABLE FECHA HORA PRIMER NOMBRE PRIMER APELLIDO SEGUNDO APELLIDO 2025-10-29",
+              "added": "PERSONA DE CONTACTO :"
+            },
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "ANTONlo"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 31,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 368,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "- I-I ac = . 4a ` [ = L a = = i i = a E = a_ E ST ` ` 1 I ` ' ' ' ^ \" I ' ZbR . CARLoSANTONIOROBLESMEDRANDA Guayaquil , de octubre del 2025 AUTORIZAC16N PARA CIRUGIA , TRATAMIENTO CLiNICO 0 PROCEDIMIENTO D . AGN6STICO Autorizo al personal medico de este establecimiento de salud para realizar las operaclohes quirurgicas , procedimlentos dlagn6sticos y tratamientos clinicos propuestos y necesarlos para el alivio o la recuperaci6n de mi enf ¢ rmedad . PARENTESCO TELEFONOS CONSENTIMIENTO INFORMADO E"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 32,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 171,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "FD € EDNUTt , 3ADDEm EiE-E = + ir + 9 - Nul . 0952472330 REPU BuCA DEL ECUADOR DmttcrfuGrm ^ i \" : REarmChni . rmmm ^ c ¢ hlycmAArmi APELLxpOs cONDcezaN ci ` mABArm ^ _ , JJ-Hirkun NOveFtEs Je - - nIAcbo . . Ai : LD . D : . : = ¥ - ` iuGAI ot veunERTo q - - . . p ? , „ u „ 6EXO H-to coc » turo Oaei7OcO FECi ¢ . DE vEnemevno 03 VAT ae32 NAT ¢ AN 5ce46a i , i + i \\ \\ fficAB ^ scaeieoFngsroErfu . r ` \\ ` figr # = ELREVAIAfu \\ / ! ` ` L ( ( , / , : # faoucaceN % = r ' ` ` ` ` ` . / i ; J , , f „ { J"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 33,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 392,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 31 02 08 1994 C . PROCEDIMIENTO Electiva Emergencia Urgencia Proyectado : COLONOSCOPIA Realizado : COLONOSCOPIA + POLIPECTOMIA + BIOP"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 34,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 94,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "G . COMPLICACIONES DEL PROCEDIMIENTO QUIRÚRGICO NO Pérdida Sanguínea total : ml Muestra : Descripción : H . EXÁMENES HISTOPATOLÓGICOS Transquirúrgico : Biopsia por congelación : SI NO Resultado : Patólogo que reporta : Histopatológico : SI X NO Muestra ; I . DIAGRAMA DEL PROCEDIMIENTO J . DATOS DEL PROFESIONAL RESPONSABLE NOMBRE Y APELLIDOS ESPECIALIDAD FIRMA SELLO Y NÚMERO DE DOCUMENTO DE IDENTIFICACIÓN Dr . ROBLES MEDRANDA CARLOS ANTONIO GASTROENTEROLOGO Dr . ROBLES MEDRANDA CARLOS ANTONIO GAS"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 35,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 452,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 31 02 08 1994 FECHA 2025-10-30 TALLA 0 PESO KG 0 IMC GRUPO Y FACTOR SI NO B . SERVICIO Y PRIORIDAD DE ATENCION DIAGNÓSTICO PREOPERATORIO CONSTIPACION"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 36,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 177,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "K . TIEMPOS TRANSCURRIDOS DURACION ANESTESIA 00 : 30 : 00 DURACION CIRUGIA 00 : 30 : 00 L . TECNICAS ESPECIALES HEMODILUCIÓN AUTOTRANSFUSIÓN HIPOTENSÍON HIPOTERMIA CIRCULACIÓN EXTRACOPÓREA M . MANTENIMIENTO TEMPERATURA CORPORAL MANTA TERMICA CALENTAMIENTO DE FLUIDOS OTROS N . INCIDENTES ACTIVIDAD ELÉCTRICA SIN PULSO ARRITMIA ASISTOLIA TRMBOEMBOLIA HIPERTERMIA MALIGNA ANAFILAXIA ISQUEMIA MIOCÁRDICA NEUMOTÓRAX BRONCOESPASMO DESPERTAR PROLONGADO EMBOLIA AÉREA VENOSA LARINGOESPASMO DIFICULTAD DE LA "
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 37,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 225,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "Paciente : ALMEIDA HIDROBO JEOFFRE ARNALDO Edad : 31 años Identificacion : 0952472330 Procedimiento : COLONOSCOPIA + POLIPECTOMIA + BIOPSIA Referido por : IESS Fecha : 30 / 10 / 2025 Hallazgos BAJO ANESTESIA , CON TÈCNICA DE INMERSION EN CLORURO DE SODIO ( USANDO 1000 cc APROX ) , SE INTRODUCE VIDEOCOLONOSCOPIO ACOPLADO A CAP REVEAL 12 , 4 MM DESCARTABLE Y KIT DE PROCESADORA POR VIA RECTAL HASTA ILEON DISTAL QUE ENDOSCOPICAMENTE ENCONTRAMOS UN ISLOTE DE MUCOSA GRANULAR AISLADA . VALVULA ILEOCECA"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 38,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 432,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE FECHA DE NACIMIENTO SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO 1994-08-02 Masculino 31 X B . DATOS DEL SERVICIO Y PRIORIDAD SERVICIO ESPECIALIDAD PRIORIDAD HORA DE TOMA FECHA DE TOMA EME"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 39,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 248,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 31 02 08 1994 B . DATOS DEL SERVICIO ESTABLECIMIENTO DE SALUD SOLCIITANTE PROFESIONAL SOLICITANTE ESPECIALIDAD CÓDIGO INTERNO DE MUES"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 40,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 284,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 31 02 08 1994 B . DATOS DEL SERVICIO ESTABLECIMIENTO DE SALUD SOLCIITANTE PROFESIONAL SOLICITANTE ESPECIALIDAD CÓDIGO INTERNO DE MUES"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 41,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 273,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCION DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 31 02 08 1994 B . DATOS DEL SERVICIO ESTABLECIMIENTO DE SALUD SOLCIITANTE PROFESIONAL SOLICITANTE ESPECIALIDAD CÓDIGO INTERNO DE MUES"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 42,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 358,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A . DATOS DEL ESTABLECIMIENTO USUARIO / PACIENTE INSTITUCIÓN DEL SISTEMA UNICODIGO ESTABLECIMIENTO DE SALUD NUMERO DE HISTORIA CLINICA NUMERO DE ARCHIVO No . HOJA IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) H D M A ALMEIDA HIDROBO JEOFFRE ARNALDO Masculino 31 02 08 1994 B . EVOLUCIÓN Y PRESCRIPCIONES FIRMAR AL PIE DE CADA EVOLUCIÓN Y PREESCRIPCIÓN REGISTRAR CON ROJO LA ADMINISTRACIÓN D"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 43,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 255,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "A . DATOS DEL ESTABLECIMIENTO Y USUARIO / PACIENTE INSTITUCIÓN DEL SISTEMA UNICÓDIGO ESTABLECIMIENTO DE SALUD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO No . HOJA IESS 26699 DR . CARLOS ANTONIO ROBLES MEDRANDA 0952472330 PRIMER APELLIDO SEGUNDO APELLIDO PRIMER NOMBRE SEGUNDO NOMBRE SEXO EDAD CONDICIÓN EDAD ( MARCAR ) D H M A ALMEIDA HIDROBO JEOFFRE ARNALDO MASCULINO 31 02 08 1994 B . RESUMEN DE CUADRO CLINICO PACIENTE MASCULINO DE 31 AÑOS DE EDAD , PACIENTE REFIERE CUADRO CLINICO DE 6 ME"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 44,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 351,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "DATOS DEL USUARIO / PACIENTE PRIMER APELLIDO PRIMER NOMBRE EDAD NÚMERO DE HISTORIA CLÍNICA ÚNICA NÚMERO DE ARCHIVO ALMEIDA JEOFFRE 31 0952472330 E . RESUMEN DE TRATAMIENTO Y PROCEDIMIENTOS TERAPÉUTICOS BAJO ANESTESIA , CON TÈCNICA DE INMERSION EN CLORURO DE SODIO ( USANDO 1000 cc APROX ) , SE INTRODUCE VIDEOCOLONOSCOPIO ACOPLADO A CAP REVEAL 12 , 4 MM DESCARTABLE Y KIT DE PROCESADORA POR VIA RECTAL HASTA ILEON DISTAL QUE ENDOSCOPICAMENTE ENCONTRAMOS UN ISLOTE DE MUCOSA GRANULAR AISLADA . VALVULA"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 45,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 492,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "GASTRITECH SA R . U . C . : 0993069299001 Dir Matriz : AV JOAQUIN ORRANTIA Y AV JUAN TANCA MARENGO EDF 100 BUSINESS PLAZA OF 504 P5 Obligado a llevar contabilidad : SI Agente de Retención : 1 Factura 001-100-000002439 Autorización número : 2705202501099306929900120011000000024390000243919 Fecha y Hora : 27 / 05 / 2025 10 : 02 : 04 Ambiente : PRODUCCIÓN Emisión : NORMAL Clave de Acceso : 2705202501099306929900120011000000024390000243919 Razón social : DR . CARLOS ROBLES MEDRANDA CI / RUC : 130718"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 46,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 509,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "INSTITUTO ECUATORIANO DE ENFERMEDADES DIGESTIVAS GASTROCLINICA SA R . U . C . : 0992704152001 Dir Matriz : Av . Abel R . Castillo S / N y Av Juan Tanca Marengo , Torre Médica I mezzanine 3 y Torre Médica II 4to piso consultorio 405 - 406 Obligado a llevar contabilidad : SI Contribuyente especial : 18337 Agente de Retención : 1 Factura 001-100-000003591 Autorización número : 2907202501099270415200120011000000035910000359110 Fecha y Hora : 29 / 07 / 2025 10 : 41 : 04 Ambiente : PRODUCCIÓN Emisión "
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 47,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 533,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "GASTRITECH SA R . U . C . : 0993069299001 Dir Matriz : AV JOAQUIN ORRANTIA Y AV JUAN TANCA MARENGO EDF 100 BUSINESS PLAZA OF 504 P5 Obligado a llevar contabilidad : SI Agente de Retención : 1 Factura 001-100-000002632 Autorización número : 3007202501099306929900120011000000026320000263212 Fecha y Hora : 30 / 07 / 2025 08 : 49 : 04 Ambiente : PRODUCCIÓN Emisión : NORMAL Clave de Acceso : 3007202501099306929900120011000000026320000263212 Razón social : DR . CARLOS ROBLES MEDRANDA CI / RUC : 130718"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 48,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 909,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "INSTITUTO ECUATORIANO DE ENFERMEDADES DIGESTIVAS GASTROCLINICA SA R . U . C . : 0992704152001 Dir Matriz : Av . Abel R . Castillo S / N y Av Juan Tanca Marengo , Torre Médica I mezzanine 3 y Torre Médica II 4to piso consultorio 405 - 406 Obligado a llevar contabilidad : SI Contribuyente especial : 18337 Agente de Retención : 1 Factura 001-100-000005259 Autorización número : 2711202501099270415200120011000000052590000525915 Fecha y Hora : 27 / 11 / 2025 11 : 51 : 05 Ambiente : PRODUCCIÓN Emisión "
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 49,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 1090,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "EG INS 00327 Stent Biliar Plástico con Sistema Introductor 10 fr x 10cm Estéril . Descartable 1 $ 450 . 00 $ 0 . 00 $ 450 . 00 EG INS 00202 MICRO PINZA P T DEMUESTRA DE BIOP 1 $ 550 . 00 $ 0 . 00 $ 550 . 00 EG INS 00078 EG INS 00041 Balón de Extracción de cálculos Biliares , triple lumen , 15-18-21 , inyección distal , long 200cm , canal de trabajo 2 . 8 Estéril . Descartable 3 $ 530 . 00 $ 0 . 00 $ 1 , 590 . 00 EG INS 00265 EG INS 00038 Balón de Dilatación Esof / Piloro / Colon 8-9-10 long Baló"
+            }
+          ]
+        },
+        {
+          "page_before": null,
+          "page_after": 50,
+          "status": "added",
+          "change_percent": 100.0,
+          "tokens_added": 232,
+          "tokens_deleted": 0,
+          "snippets": [
+            {
+              "operation": "insert",
+              "deleted": "",
+              "added": "EG INS 00496 PAMIRAY 300 AMP X100ML 33 $ 47 . 63 $ 0 . 00 $ 1 , 571 . 79 EG INS 00502 BALóN DE EXTRACCIóN DE CáLCULOS BILIARES , TRIPLE LUMEN , - 12-15 , INYECCIóN DISTAL , DIAM CATéTER 7FR LONG 200CM , CANAL DE TRABAJO 2 . 8 ESTéRIL . DESCARTABLE 1 $ 530 . 00 $ 0 . 00 $ 530 . 00 EG INS 00526 BALON DILATACION ESOF / PILORO / MULTIDIAMETRO 10-11-12 LONG BALON 5 . 5CM , DIAM CATETER 7MM LONG 180CM 1 $ 630 . 00 $ 0 . 00 $ 630 . 00 Información adicional Dirección : Abel Romeo Castillo s / n y Av . J"
+            }
+          ]
+        }
+      ],
+      "sensitive_changes": {
+        "amounts": {
+          "added": [
+            "$0,00",
+            "$0,00",
+            "$1,50",
+            "$20,00",
+            "$2,00",
+            "$3,0000",
+            "$25,00",
+            "$95,00",
+            "$14,2500",
+            "$118,75",
+            "$0,22",
+            "$0,0330",
+            "$0,27",
+            "$0,0540",
+            "$0,45",
+            "$1,20",
+            "$0,1800",
+            "$3,90",
+            "$0,5850",
+            "$4,88",
+            "$1,60",
+            "$0,2400",
+            "$0,42",
+            "$0,06",
+            "$0,0630",
+            "$0,54",
+            "$0,70",
+            "$0,1050",
+            "$0,88",
+            "$0,75",
+            "$0,1125",
+            "$0,94",
+            "$0,0420",
+            "$0,35",
+            "$157,25",
+            "$839,87",
+            "$ 510.00",
+            "$ 510.00",
+            "$ 510.00",
+            "$ 510.00",
+            "$ 510.00",
+            "$ 510.00",
+            "$ 510.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00",
+            "$ 0.00"
+          ],
+          "removed": [
+            "$1,32",
+            "$0,01",
+            "$0,01",
+            "$22,00",
+            "$3,3000",
+            "$25,30",
+            "$104,50",
+            "$15,6750",
+            "$120,18",
+            "$0,24",
+            "$0,0360",
+            "$0,40",
+            "$0,04",
+            "$0,0600",
+            "$0,46",
+            "$0,1980",
+            "$1,52",
+            "$4,29",
+            "$0,6435",
+            "$4,93",
+            "$1,76",
+            "$0,2640",
+            "$2,02",
+            "$0,48",
+            "$0,0720",
+            "$0,55",
+            "$0,77",
+            "$0,1155",
+            "$0,89",
+            "$0,83",
+            "$0,1245",
+            "$0,95",
+            "$0,31",
+            "$0,0465",
+            "$159,12",
+            "$841,74"
+          ],
+          "added_count": 360,
+          "removed_count": 36
+        },
+        "dates": {
+          "added": [
+            "2025-10-29",
+            "2025-10-30",
+            "2025-10-30",
+            "2025-11-24",
+            "2025-11-24",
+            "29/10/2025",
+            "30/10/2025",
+            "30/10/2025",
+            "30/10/2025",
+            "27/05/2025",
+            "27/05/2025",
+            "07/06/2025",
+            "27/11/2027",
+            "15/18/21",
+            "15-18-21",
+            "15-18-21",
+            "14/05/2025",
+            "04/03/2027",
+            "30/08/2025",
+            "05/08/2026",
+            "29/07/2025",
+            "29/07/2025",
+            "30/07/2025",
+            "30/07/2025",
+            "12/15/18",
+            "12-15-18",
+            "12-15-18",
+            "12-15-18",
+            "27/11/2025",
+            "27/11/2025",
+            "10-11-12",
+            "10-11-12",
+            "8-9-10"
+          ],
+          "removed": [
+            "2025-11-10",
+            "2025-11-10",
+            "2025-11-10",
+            "2025-11-10",
+            "2025-11-10"
+          ],
+          "added_count": 33,
+          "removed_count": 5
+        },
+        "identifiers": {
+          "added": [
+            "0952472330",
+            "0952472330",
+            "0952472330",
+            "0952472330",
+            "0918552092",
+            "1307189140",
+            "1307189140",
+            "1307189140",
+            "1307189140",
+            "1307189140",
+            "1307189140",
+            "1307189140",
+            "1307189140",
+            "1307189140",
+            "1307189140",
+            "5370230027"
+          ],
+          "removed": [
+            "0926862152",
+            "0983753477",
+            "0983753477",
+            "0983753477",
+            "0983753477",
+            "0991051413",
+            "0991051413",
+            "0991051413",
+            "0991051413",
+            "0986637750",
+            "0986637750",
+            "0986637750",
+            "0986637750",
+            "0916461221",
+            "0916461221",
+            "0916461221",
+            "0916461221"
+          ],
+          "added_count": 16,
+          "removed_count": 17
+        },
+        "diagnostic_codes": {
+          "added": [
+            "b20"
+          ],
+          "removed": [],
+          "added_count": 1,
+          "removed_count": 0
+        },
+        "signature_terms": {
+          "added": [
+            "firma",
+            "firma",
+            "firma",
+            "firma",
+            "firmas",
+            "firmas",
+            "firmas",
+            "firmas"
+          ],
+          "removed": [],
+          "added_count": 8,
+          "removed_count": 0
+        }
+      },
+      "metadata_changes": {
+        "creationdate": {
+          "before": "D:20260903133020-05'00'",
+          "after": "D:20251127142210-05'00'"
+        },
+        "creator": {
+          "before": "RICOH MP C307",
+          "after": null
+        },
+        "moddate": {
+          "before": "D:20260903133020-05'00'",
+          "after": "D:20251127142210-05'00'"
+        },
+        "producer": {
+          "before": "dompdf <5113accd> + CPDF",
+          "after": "iText® 5.5.11 ©2000-2017 iText Group NV (AGPL-version)"
+        },
+        "title": {
+          "before": "PLANILLA PUBLICA",
+          "after": null
+        }
+      },
+      "scores": {
+        "components": {
+          "P": 66.667,
+          "T": 64.058,
+          "V": 73.333,
+          "F": 100.0,
+          "M": 100.0
+        },
+        "technical_change_percent": 70.96,
+        "severity": 80,
+        "level": "muy alto"
+      },
+      "ollama": {
+        "status": "ok",
+        "model": "gemma4:e2b-it-qat",
+        "usage": {
+          "prompt_tokens": 1491,
+          "completion_tokens": 541,
+          "total_tokens": 2032
+        },
+        "summary": {
+          "summary": {
+            "text": "Se detectó una diferencia neta de +20 páginas, un cambio de texto de 64.058%, un cambio técnico de 70.96% y una prioridad de revisión de 80.00/100.",
+            "evidence_ids": [
+              "E_PAGE_DELTA",
+              "E_TEXT_CHANGE",
+              "E_TECHNICAL",
+              "E_SEVERITY"
+            ]
+          },
+          "main_changes": [
+            {
+              "text": "Se agregaron 360 cambios en montos y se eliminaron 36 cambios en montos.",
+              "evidence_ids": [
+                "E_AMOUNTS"
+              ]
+            },
+            {
+              "text": "Se agregaron 33 cambios de fechas y se eliminaron 5 cambios de fechas.",
+              "evidence_ids": [
+                "E_DATES"
+              ]
+            },
+            {
+              "text": "Se agregaron 16 cambios en identificadores y se eliminaron 17 cambios en identificadores.",
+              "evidence_ids": [
+                "E_IDENTIFIERS"
+              ]
+            },
+            {
+              "text": "Se agregó 1 cambio en códigos de diagnóstico y no se eliminó ningún cambio en códigos de diagnóstico.",
+              "evidence_ids": [
+                "E_DIAGNOSTIC_CODES"
+              ]
+            },
+            {
+              "text": "Se agregaron 8 cambios en términos de firma y no se eliminaron ningún cambio en términos de firma.",
+              "evidence_ids": [
+                "E_SIGNATURE_TERMS"
+              ]
+            }
+          ],
+          "alerts": [
+            {
+              "text": "El valor de severidad es 80.",
+              "evidence_ids": [
+                "E_SEVERITY"
+              ]
+            },
+            {
+              "text": "El cambio técnico es del 70.96%.",
+              "evidence_ids": [
+                "E_TECHNICAL"
+              ]
+            }
+          ],
+          "limitations": [
+            "No se confirma un cambio campo a campo.",
+            "No se infieren causas, fraude, manipulación, intención, autoría, identidad o diagnóstico.",
+            "No se inventaron valores."
+          ]
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "OCR Tesseract se aplica solo a páginas con texto extraíble insuficiente.",
+    "Señales sensibles basadas en expresiones regulares.",
+    "Ollama solo recibe métricas anonimizadas y puede no estar disponible."
+  ]
+}

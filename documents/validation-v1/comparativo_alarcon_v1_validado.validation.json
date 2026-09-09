@@ -1,0 +1,20 @@
+{
+  "event": "report_created",
+  "run_id": "8575627a-46a7-4a29-9c88-05a2b9aa63b2",
+  "status": "partial",
+  "patients": 1,
+  "pages_original": 27,
+  "pages_modified": 48,
+  "findings": 72,
+  "types": {
+    "review": 66,
+    "modified": 6
+  },
+  "page_mapping": {
+    "matched": 4,
+    "review": 4,
+    "removed": 19,
+    "added": 40
+  },
+  "output": "/mnt/c/102025_IESS_Dr. Carlos Robles Medranda/compareforms_project/outputs/comparativo_alarcon_v1_validado.xlsx"
+}
