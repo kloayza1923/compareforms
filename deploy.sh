@@ -10,7 +10,7 @@ PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 EXCLUDES=(--exclude '.env' --exclude '.venv/' --exclude '.testdeps/' --exclude '__pycache__/' --exclude '.pytest_cache/' --exclude 'results/')
 if [[ "$INCLUDE_MONTHS" != "1" ]]; then
-  EXCLUDES+=(--exclude '20[0-9][0-9]_[0-1][0-9]/')
+  EXCLUDES+=(--exclude 'dataset/' --exclude '20[0-9][0-9]_[0-1][0-9]/')
 fi
 rsync -az "${EXCLUDES[@]}" ./ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/"
 

@@ -1,2 +1,0 @@
-﻿index,name,identical,name_matches,pages_before,pages_after,page_delta,size_delta_bytes,tokens_added,tokens_deleted,text_change_percent,technical_change_percent,severity,level,ocr_pages_before,ocr_pages_after,ollama_status,ollama_prompt_tokens,ollama_completion_tokens,ollama_total_tokens,ollama_summary
-1,ALMEIDA HIDROBO JEOFFRE ARNALDO,False,True,30,50,20,7120303,11919,5059,64.058,70.96,80,muy alto,,,ok,1491,541,2032,"Se detectó una diferencia neta de +20 páginas, un cambio de texto de 64.058%, un cambio técnico de 70.96% y una prioridad de revisión de 80.00/100."

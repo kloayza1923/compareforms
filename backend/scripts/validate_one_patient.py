@@ -28,8 +28,8 @@ def main():
     cfg = Settings()
     if "127.0.0.1:54327/compareforms" not in cfg.database_url:
         raise SystemExit("Acceptance is restricted to the isolated local database.")
-    original = ROOT / "2026_06/pdf_origen/ALARCON CARPIO DIGNA ASUNCION_origen.pdf"
-    modified = ROOT / "2026_06/pdf_modificado/1 - ALARCON CARPIO DIGNA ASUNCION_modificado.pdf"
+    original = ROOT / "dataset/2026_06/pdf_origen/ALARCON CARPIO DIGNA ASUNCION_origen.pdf"
+    modified = ROOT / "dataset/2026_06/pdf_modificado/1 - ALARCON CARPIO DIGNA ASUNCION_modificado.pdf"
     if not original.is_file() or not modified.is_file(): raise SystemExit("Missing selected pair.")
     token = secrets.token_hex(6)
     password = secrets.token_urlsafe(30)

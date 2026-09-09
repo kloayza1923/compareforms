@@ -19,13 +19,18 @@ Servicio mensual para comparar PDF entregados por un proceso automatizado con su
 ## Estructura de datos
 
 ```text
-2025_10/
-  pdf_origen/
-    1 - NOMBRE.pdf
-  pdf_modificado/
-    1 - NOMBRE.pdf
-  results/                   # generado
+dataset/
+  2025_10/
+    pdf_origen/
+      1 - NOMBRE.pdf
+    pdf_modificado/
+      1 - NOMBRE.pdf
+    results/                 # generado
+  2026_03/
+  2026_06/
 ```
+
+La herramienta mensual busca los meses dentro de `dataset/` por defecto. `COMPAREFORMS_DATA_ROOT` permite usar otra ubicación; si ya estaba definida con la raíz antigua, actualícela a `/home/mdconsgroup/projects/compareforms/dataset` (o la ruta equivalente del servidor). Los comandos siguen recibiendo solo el mes, por ejemplo `python run_compare.py 2025_10`. El portal V1 mantiene sus cargas en `documents/` y su configuración de entorno es independiente.
 
 Cada archivo se empareja por el prefijo numérico. Los índices duplicados producen error y los faltantes quedan registrados. Los PDF nunca se modifican.
 
@@ -55,7 +60,7 @@ python run_compare.py 2025_10 --indices 6,30,35
 
 El manifiesto etiqueta estas corridas como `selected_indices`, para no confundirlas con un mes completo.
 
-El proceso genera `comparison_details.json`, `comparison_summary.csv` y `comparison_summary.xlsx` dentro de `results/`. Los tres reportes registran tokens enviados, recibidos y totales consumidos por Ollama para cada expediente.
+El proceso genera `comparison_details.json`, `comparison_summary.csv` y `comparison_summary.xlsx` dentro de `dataset/<mes>/results/`. Los tres reportes registran tokens enviados, recibidos y totales consumidos por Ollama para cada expediente.
 
 ## Ollama
 

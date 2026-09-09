@@ -10,7 +10,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 @dataclass(frozen=True)
 class Settings:
-    data_root: Path = Path(os.getenv("COMPAREFORMS_DATA_ROOT", PROJECT_ROOT))
+    data_root: Path = Path(os.getenv("COMPAREFORMS_DATA_ROOT", PROJECT_ROOT / "dataset"))
     ollama_url: str = os.getenv("OLLAMA_URL", "http://127.0.0.1:11434")
     ollama_model: str = os.getenv("OLLAMA_MODEL", "gemma4:e2b-it-qat")
     ollama_timeout_seconds: int = int(os.getenv("OLLAMA_TIMEOUT_SECONDS", "180"))
