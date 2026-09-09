@@ -23,6 +23,7 @@ export interface Finding {
   id: string; change_type: ChangeType; category: string; description: string; before: string; after: string;
   page_original: number | null; page_modified: number | null; confidence: number | null; review_required: boolean;
   source?: 'automatic' | 'manual';
+  page_relocated?: boolean;
 }
 export interface Comparison {
   status: string; pages_original: number; pages_modified: number; pages_added: number; pages_removed: number;

@@ -350,6 +350,30 @@ def create_app(settings: Settings | None = None):
             m.event(db, user, "download_excel", r.id); db.commit()
             return FileResponse(path, filename=f"comparativo_{r.id}.xlsx", media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
+    @app.get(prefix + "/runs/{run_id}/cases/{case_id}/findings/{finding_id}/evidence")
+    def evidence(run_id: str, case_id: str, finding_id: str, request: Request, side: Literal["original", "modified"]):
+        from .evidence import render_evidence
+        with SessionLocal() as db:
+            user, _ = identity(request, db)
+            case = case_for(db, user, run_id, case_id)
+            finding = next((f for f in (case.comparison or {}).get("findings", []) if str(f["id"]) == finding_id), None)
+            if finding is None:
+                manual = db.get(m.ManualFinding, finding_id)
+                if manual and manual.case_id == case.id:
+                    finding = manual.data
+            if finding is None: raise HTTPException(404, "Observación no encontrada")
+            number = finding.get("page_" + side)
+            if not number: raise HTTPException(404, "Esta observación no tiene página en esta versión")
+            document = db.get(m.Document, case.original_id if side == "original" else case.modified_id)
+            if not document or document.batch_id != db.get(m.Run, case.run_id).batch_id: raise HTTPException(404, "Documento no encontrado")
+            path = private_path(cfg.documents_root, document.storage_key)
+            if not path.is_file(): raise HTTPException(404, "Archivo no disponible")
+            content = finding.get("before" if side == "original" else "after", "")
+        try:
+            return render_evidence(path, int(number), content, ocr_enabled=cfg.ocr_enabled)
+        except (ValueError, RuntimeError):
+            raise HTTPException(422, "No se pudo mostrar esta página. Abre el PDF para consultarla.") from None
+
     @app.post(prefix + "/runs/{run_id}/cases/{case_id}/reviews", status_code=201)
     def review(run_id: str, case_id: str, data: ReviewIn, request: Request):
         with SessionLocal() as db:

@@ -47,6 +47,8 @@ describe('Flujo del auditor', () => {
     expect(headers[6]).toHaveTextContent('Página modificado');
     expect(screen.getByRole('link', { name: /Descargar Excel/ })).toHaveAttribute('href', '/api/v1/runs/r/report');
     fireEvent.change(screen.getByLabelText('Filtrar por tipo de cambio'), { target: { value: 'removed' } });
+    expect(screen.getByText('Documento de soporte incorporado')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name:'Buscar' }));
     expect(screen.getByText('Documento de soporte retirado')).toBeInTheDocument();
     expect(screen.queryByText('Documento de soporte incorporado')).not.toBeInTheDocument();
     const row = screen.getByText('Documento de soporte retirado').closest('tr')!;
@@ -85,7 +87,9 @@ describe('Flujo del auditor', () => {
   it('un resultado no concluyente no presenta conteos añadidos o retirados como confirmados', async () => {
     apiMock.mockResolvedValue({ ...run, status: 'partial', cases: [{ ...run.cases[0], comparison: { ...run.cases[0].comparison!, status: 'inconclusive' } }] });
     render(<RunPage runId="r" />);
-    await screen.findByText('Correspondencia automática pendiente de confirmar.');
+    await screen.findByText('Documento de soporte incorporado');
+    expect(screen.queryByText('Correspondencia automática pendiente de confirmar.')).not.toBeInTheDocument();
+    fireEvent.click(screen.getByText('Detalles y correspondencia de páginas'));
     expect(screen.getAllByText('Sin determinar')).toHaveLength(3);
     expect(screen.queryByText('+1')).not.toBeInTheDocument();
     expect(screen.queryByText('−1')).not.toBeInTheDocument();
@@ -94,7 +98,9 @@ describe('Flujo del auditor', () => {
   it('una fila del mapa pendiente de revisión invalida los conteos aunque el estado general diga completado', async () => {
     apiMock.mockResolvedValue({ ...run, cases: [{ ...run.cases[0], comparison: { ...run.cases[0].comparison!, page_map: [{ page_original: null, page_modified: 2, status: 'added', similarity: .4, review_required: true }] } }] });
     render(<RunPage runId="r" />);
-    await screen.findByText('Correspondencia automática pendiente de confirmar.');
+    await screen.findByText('Documento de soporte incorporado');
+    expect(screen.queryByText('Correspondencia automática pendiente de confirmar.')).not.toBeInTheDocument();
+    fireEvent.click(screen.getByText('Detalles y correspondencia de páginas'));
     expect(screen.getAllByText('Sin determinar')).toHaveLength(3);
     expect(screen.getByText('Correspondencia pendiente de confirmar')).toBeInTheDocument();
   });

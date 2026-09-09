@@ -186,3 +186,32 @@ def test_unmatched_pages_are_review_candidates_not_confirmed_additions(tmp_path)
     assert result["pages_added"] == result["pages_removed"] == 1
     assert all(f["change_type"] == "review" for f in result["findings"])
     assert {f["proposed_change_type"] for f in result["findings"]} == {"added", "removed"}
+
+
+FORM = "INFORME TÉCNICO-MÉDICO PARA LA JUSTIFICACIÓN DE PRESTACIONES ADICIONALES\nCÓDIGO DE VALIDACIÓN QUE AUTORIZÓ PRESTACIÓN: TEST-VALIDACION-2026-001\n"
+LABEL = "DIAGNÓSTICO(S) QUE JUSTIFICARON EL CÓDIGO DE VALIDACIÓN: "
+CURRENT = "DIGANÓSTICOS ACTUALES QUE JUSTIFICARÁN LA PRESTACIÓN ADICIONAL: K635 POLIPO DEL COLON"
+
+def test_diagnosis_matches_same_field_despite_extraction_order():
+    old = FORM + LABEL + 'K635 POLIPO DEL COLON\n' + CURRENT + '\nContenido clínico que permanece'
+    new = FORM + 'Contenido clínico que permanece\n' + LABEL + 'K 590 CONSTIPACION\n' + CURRENT
+    changes = _line_changes(Page(2, old), Page(29, new))
+    assert len(changes) == 1
+    finding = changes[0]
+    assert finding['change_type'] == 'modified'
+    assert finding['category'] == 'Diagnóstico documental'
+    assert 'K635' in finding['before'] and 'K 590' in finding['after']
+    assert (finding['page_original'], finding['page_modified']) == (2,29)
+
+def test_unique_validation_code_matches_relocated_form():
+    a = [Page(2, FORM + LABEL + 'K635 POLIPO DEL COLON'), Page(3, 'Factura mercantil tributaria soporte fiscal proveedor importe total')]
+    b = [Page(2, a[1].text), Page(29, FORM + LABEL + 'K590 CONSTIPACION')]
+    rows = _align_pages(a,b)
+    match = next(row for row in rows if row['page_original']==2)
+    assert match['page_modified']==29 and match['relocated']
+    assert match['match_basis']=='validation_code_and_form' and not match['review_required']
+    assert _document_type(FORM+'Anatomía patológica mencionada en el cuerpo') == 'Informe técnico-médico'
+
+def test_different_validation_codes_do_not_pair_similar_templates():
+    rows = _align_pages([Page(1,FORM+LABEL+'K635 POLIPO DEL COLON')], [Page(1,FORM.replace('2026-001','2026-002')+LABEL+'K635 POLIPO DEL COLON')])
+    assert all(row['page_original'] is None or row['page_modified'] is None for row in rows)

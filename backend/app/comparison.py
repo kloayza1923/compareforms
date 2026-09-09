@@ -21,7 +21,7 @@ import numpy as np
 from pypdf import PdfReader
 from scipy.optimize import linear_sum_assignment
 
-ENGINE_VERSION = "deterministic-a/1.0.1"
+ENGINE_VERSION = "deterministic-a/1.1.0"
 MAX_PAGES = 500
 MAX_TEXT_CHARS_PER_PAGE = 200_000
 MAX_RENDER_PIXELS = 20_000_000
@@ -79,6 +79,9 @@ def _readable(text: str) -> bool:
 
 def _document_type(text: str) -> str:
     key = _normal(text[:3500])
+    # A form heading takes precedence over diagnoses/references in its body.
+    if re.search(r"informe tecnico[\s-]*medico", key[:1200]):
+        return "Informe técnico-médico"
     for title, terms in DOCUMENT_TYPES:
         if any(term in key for term in terms):
             return title
@@ -221,12 +224,31 @@ def _similarity(a: Page, b: Page, weights: dict[str, float]) -> float:
     return score
 
 
+def _form_key(page: Page) -> tuple[str, str] | None:
+    if not page.readable:
+        return None
+    match = re.search(r"codigo de validacion que autorizo prestacion\s*:+\s*([a-z0-9]+(?:\s*-\s*[a-z0-9]+){2,})", _normal(page.text))
+    if not match:
+        return None
+    return _document_type(page.text), re.sub(r"\s+", "", match.group(1))
+
+
 def _align_pages(original: list[Page], modified: list[Page]) -> list[dict]:
     """Global one-to-one cost minimization with independent unmatched nodes."""
     n, m = len(original), len(modified)
     frequency = Counter(token for p in original + modified for token in set(p.tokens))
     weights = {word: 1 + math.log((n + m + 1) / (count + 1)) for word, count in frequency.items()}
     scores = np.array([[_similarity(a, b, weights) for b in modified] for a in original])
+    keys_a, keys_b = [_form_key(p) for p in original], [_form_key(p) for p in modified]
+    count_a, count_b = Counter(keys_a), Counter(keys_b)
+    anchored = set()
+    for i, key in enumerate(keys_a):
+        for j, other in enumerate(keys_b):
+            if key and other and key[0] == other[0] and key[1] != other[1]:
+                scores[i, j] = 0  # Similar templates with different authorizations are not equivalent.
+            elif key and key == other and count_a[key] == count_b[key] == 1:
+                scores[i, j] = max(scores[i, j], 0.98)
+                anchored.add((i, j))
     # Real->own dummy = removal; own dummy->real = addition; dummy->dummy=0.
     costs = np.full((n + m, n + m), 1e6)
     costs[:n, :m] = np.where(scores >= MATCH_THRESHOLD, 1 - scores, 1e6)
@@ -249,11 +271,11 @@ def _align_pages(original: list[Page], modified: list[Page]) -> list[dict]:
         # alternatives are explicitly tentative instead of silently forced.
         alternatives = [(original[ii], b, float(scores[ii, j])) for ii in range(n) if ii != i]
         alternatives += [(a, modified[jj], float(scores[i, jj])) for jj in range(m) if jj != j]
-        ambiguous = score < 0.75 or any(s >= MATCH_THRESHOLD and abs(s - score) < AMBIGUITY_MARGIN and not (
+        ambiguous = (i, j) not in anchored and (score < 0.75 or any(s >= MATCH_THRESHOLD and abs(s - score) < AMBIGUITY_MARGIN and not (
             p.visual_hash and q.visual_hash and a.visual_hash and b.visual_hash
             and p.visual_hash == q.visual_hash == a.visual_hash == b.visual_hash
-        ) for p, q, s in alternatives)
-        result.append({"page_original": a.number, "page_modified": b.number, "status": "review" if ambiguous else "matched", "similarity": round(score, 4), "review_required": ambiguous})
+        ) for p, q, s in alternatives))
+        result.append({"page_original": a.number, "page_modified": b.number, "status": "review" if ambiguous else "matched", "similarity": round(score, 4), "review_required": ambiguous, "match_basis": "validation_code_and_form" if (i, j) in anchored else "content"})
     used = set(matched.values())
     for j, b in enumerate(modified):
         if j not in used:
@@ -302,7 +324,7 @@ def _finding(kind: str, category: str, description: str, before: str, after: str
             "confidence": round(confidence, 4), "review_required": review, **extra}
 
 
-def _line_changes(a: Page, b: Page) -> list[dict]:
+def _sequence_line_changes(a: Page, b: Page) -> list[dict]:
     old, new = a.text.splitlines(), b.text.splitlines()
     # Ignore whitespace wrapping alone but preserve numbers, accents and case.
     if re.sub(r"\s+", " ", a.text) == re.sub(r"\s+", " ", b.text):
@@ -349,6 +371,44 @@ def _line_changes(a: Page, b: Page) -> list[dict]:
             description += " Texto obtenido mediante OCR: requiere cotejo con el PDF."
         findings.append(_finding(kind, category, description, before, after, a.number, b.number, min(a.confidence, b.confidence), review, monetary_changes=monetary_changes,
                                  line_original_start=i + 1 if i < ii else None, line_modified_start=j + 1 if j < jj else None))
+    return findings
+
+
+def _line_changes(a: Page, b: Page) -> list[dict]:
+    def fields(text):
+        grouped = defaultdict(list)
+        for index, line in enumerate(text.splitlines()):
+            label, sep, value = line.partition(":")
+            key = _normal(label)
+            if sep and len(key) >= 12 and len(key.split()) >= 2:
+                grouped[key].append((index, line, value.strip()))
+        return grouped
+    old_fields, new_fields = fields(a.text), fields(b.text)
+    old_used, new_used, findings = set(), set(), []
+    for key in old_fields:
+        if key not in new_fields:
+            continue
+        if len(old_fields[key]) != 1 or len(new_fields[key]) != 1:
+            continue  # Repeated labels must not be paired arbitrarily.
+        i, before, before_value = old_fields[key][0]
+        j, after, after_value = new_fields[key][0]
+        old_used.add(i); new_used.add(j)
+        if before == after:
+            continue
+        changes = _sequence_line_changes(
+            Page(a.number, before, source=a.source, confidence=a.confidence),
+            Page(b.number, after, source=b.source, confidence=b.confidence))
+        for finding in changes:
+            finding.update(line_original_start=i + 1, line_modified_start=j + 1)
+            if 'diagnostic' in key or 'diganostic' in key:
+                finding['category'] = 'Diagnóstico documental'
+                finding['description'] = 'Cambió el diagnóstico en el mismo campo del formulario.'
+            findings.append(finding)
+    remaining_a = "\n".join(line for i, line in enumerate(a.text.splitlines()) if i not in old_used)
+    remaining_b = "\n".join(line for i, line in enumerate(b.text.splitlines()) if i not in new_used)
+    findings.extend(_sequence_line_changes(
+        Page(a.number, remaining_a, source=a.source, confidence=a.confidence),
+        Page(b.number, remaining_b, source=b.source, confidence=b.confidence)))
     return findings
 
 
@@ -438,6 +498,8 @@ def compare_documents(original: Path, modified: Path, *, ocr_enabled: bool = Tru
         result["pages_evaluated_original"] += 1
         result["pages_evaluated_modified"] += 1
         lines = _line_changes(a, b)
+        for finding in lines:
+            finding["page_relocated"] = bool(row.get("relocated"))
         findings.extend(lines)
         ta, tb = a.tokens, b.tokens
         seq = SequenceMatcher(None, ta, tb, autojunk=True)
