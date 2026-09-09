@@ -1,3 +1,5 @@
+import { RunStatistics } from './RunStatistics';
+import { incidenceCount } from './statistics';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { api, documentUrl, errorMessage, post, reportUrl } from './api';
 import { Busy, ChangeBadge, Empty, Icon, Notice, PageHeading, StateBadge } from './components';
@@ -38,6 +40,7 @@ export function RunPage({ runId, initialCaseId }: { runId: string; initialCaseId
   const [error, setError] = useState('');
   const [selectedCase, setSelectedCase] = useState(initialCaseId || '');
   const [patientSearch, setPatientSearch] = useState('');
+  const [statisticType, setStatisticType] = useState<ChangeType | 'all'>('all');
   const [refresh, setRefresh] = useState(0);
   useEffect(() => {
     let alive = true; let timer: ReturnType<typeof setTimeout>;
@@ -45,16 +48,21 @@ export function RunPage({ runId, initialCaseId }: { runId: string; initialCaseId
       try {
         const value = await api<Run>(`/runs/${runId}`);
         if (!alive) return; setRun(value); setError('');
-        setSelectedCase(previous => previous || value.cases[0]?.id || '');
+        setSelectedCase(previous => previous || [...value.cases].sort((a, b) => incidenceCount(b) - incidenceCount(a))[0]?.id || '');
         if (['queued', 'running'].includes(value.status)) timer = setTimeout(load, 3000);
       } catch (cause) { if (alive) { setError(errorMessage(cause)); timer = setTimeout(load, 10000); } }
     };
     void load(); return () => { alive = false; clearTimeout(timer); };
   }, [runId, refresh]);
   const current = run?.cases.find(item => item.id === selectedCase);
-  const cases = run?.cases.filter(item => item.patient_name.toLocaleLowerCase('es').includes(patientSearch.toLocaleLowerCase('es'))) || [];
+  const cases = (run?.cases.filter(item => item.patient_name.toLocaleLowerCase('es').includes(patientSearch.toLocaleLowerCase('es')) && (statisticType === 'all' || incidenceCount(item, statisticType) > 0)) || []).sort((a, b) => incidenceCount(b, statisticType) - incidenceCount(a, statisticType));
+  const selectStatistic = (type: ChangeType | 'all') => {
+    setStatisticType(type); setPatientSearch('');
+    const ranked = [...(run?.cases || [])].filter(item => type === 'all' || incidenceCount(item, type) > 0).sort((a, b) => incidenceCount(b, type) - incidenceCount(a, type));
+    setSelectedCase(ranked[0]?.id || '');
+  };
   const active = run && ['queued', 'running'].includes(run.status);
-  return <><PageHeading title="Revisión de resultados" action={<div className="d-flex gap-2 flex-wrap"><a href="#/history" className="btn btn-outline-secondary">Historial</a>{run && !active && <a href={`#/batches/${run.batch_id}`} className="btn btn-outline-primary">Volver a comparar</a>}{run?.report_available && <a href={reportUrl(run.id)} className="btn btn-primary"><Icon name="download" /> Descargar Excel</a>}</div>}>Primero identifica al paciente; después revisa el tipo de cambio y su ubicación en ambos PDF.</PageHeading>
+  return <><PageHeading title="Revisión de resultados" action={<div className="d-flex gap-2 flex-wrap"><a href="#/history" className="btn btn-outline-secondary">Historial</a>{run && !active && <a href={`#/batches/${run.batch_id}`} className="btn btn-outline-primary">Volver a comparar</a>}{run?.report_available && <a href={reportUrl(run.id)} className="btn btn-primary"><Icon name="download" /> Descargar Excel</a>}</div>}>Consulta el resumen general y prioriza los pacientes con más incidencias antes de revisar la evidencia.</PageHeading>
     {run?.report_available && <Notice>{excelSnapshotNotice}</Notice>}
     {error && <Notice tone="danger">No se pudo actualizar el progreso: {error}. Los trabajos ya iniciados continúan en el servidor.</Notice>}
     {!run ? <Busy /> : <>
@@ -62,21 +70,22 @@ export function RunPage({ runId, initialCaseId }: { runId: string; initialCaseId
       {run.total === 0 && <Notice tone="danger">Sin comparación: esta ejecución no tiene expedientes. No puede interpretarse como «sin diferencias».</Notice>}
       {run.error && <Notice tone="danger">{run.error}</Notice>}
       {run.status === 'partial' && <Notice tone="warning">Resultado parcial / no concluyente. Revisa los expedientes pendientes, errores y limitaciones antes de usar el informe.</Notice>}
-      <div className="review-layout"><aside className="patient-selector surface-card"><h2>Pacientes <span>{run.cases.length}</span></h2><label className="visually-hidden" htmlFor="patient-search">Buscar paciente</label><input className="form-control mb-3" id="patient-search" type="search" placeholder="Buscar paciente…" value={patientSearch} onChange={event => setPatientSearch(event.target.value)} />{cases.map(item => <button key={item.id} className={`patient-button ${item.id === selectedCase ? 'selected' : ''}`} aria-pressed={item.id === selectedCase} onClick={() => setSelectedCase(item.id)}><strong>{item.patient_name || 'Paciente sin identificar'}</strong><StateBadge status={caseStatus(item)} /><small>{item.comparison ? `${allFindings(item).length} observaciones` : 'Comparación pendiente'}</small></button>)}{!cases.length && <p className="text-secondary small">No hay pacientes para mostrar.</p>}</aside>
-        <div className="review-content">{current ? <CaseReview key={current.id} runId={run.id} caseItem={current} refresh={() => setRefresh(value => value + 1)} /> : <Empty title="Selecciona un paciente">La identificación y la evidencia se mostrarán aquí.</Empty>}</div></div>
+      <RunStatistics cases={run.cases} totalCases={run.total} active={!!active} selected={statisticType} onSelect={selectStatistic} />
+      <div className="review-layout"><aside className="patient-selector surface-card"><h2>Pacientes <span>{cases.length}</span></h2><p className="form-text">Mayor número de incidencias primero{statisticType !== 'all' ? ` · ${changeLabels[statisticType]}` : ''}.</p><label className="visually-hidden" htmlFor="patient-search">Buscar paciente</label><input className="form-control mb-3" id="patient-search" type="search" placeholder="Buscar paciente…" value={patientSearch} onChange={event => setPatientSearch(event.target.value)} />{cases.map(item => <button key={item.id} className={`patient-button ${item.id === selectedCase ? 'selected' : ''}`} aria-pressed={item.id === selectedCase} onClick={() => setSelectedCase(item.id)}><strong>{item.patient_name || 'Paciente sin identificar'}</strong><StateBadge status={caseStatus(item)} /><small>{item.comparison ? `${incidenceCount(item, statisticType)} incidencias${statisticType !== 'all' ? ` de ${allFindings(item).length}` : ''}` : 'Comparación pendiente'}</small></button>)}{!cases.length && <p className="text-secondary small">No hay pacientes para mostrar.</p>}</aside>
+        <div className="review-content">{current ? <CaseReview key={`${current.id}-${statisticType}`} initialType={statisticType} runId={run.id} caseItem={current} refresh={() => setRefresh(value => value + 1)} /> : <Empty title="Selecciona un paciente">La identificación y la evidencia se mostrarán aquí.</Empty>}</div></div>
     </>}</>;
 }
 
-export function CaseReview({ runId, caseItem, refresh }: { runId: string; caseItem: Case; refresh: () => void }) {
+export function CaseReview({ runId, caseItem, refresh, initialType = 'all' }: { runId: string; caseItem: Case; refresh: () => void; initialType?: ChangeType | 'all' }) {
   const comparison = caseItem.comparison;
   const countsDetermined = pageCountsDetermined(comparison, caseItem.status);
-  const [draft, setDraft] = useState({ type:'all', from:'', to:'' });
+  const [draft, setDraft] = useState({ type:initialType as string, from:'', to:'' });
   const [filters, setFilters] = useState(draft);
   const [filterError, setFilterError] = useState('');
   const [findingId, setFindingId] = useState('');
   const findings = allFindings(caseItem);
   const visible = findings.filter(finding => {
-    const type = filters.type === 'all' || finding.change_type === filters.type || (filters.type === 'relocated' && finding.page_relocated);
+    const type = filters.type === 'all' || finding.change_type === filters.type;
     const pages = [finding.page_original, finding.page_modified].filter((page): page is number => page != null);
     return type && ((!filters.from && !filters.to) || pages.some(page => page >= Number(filters.from || 1) && page <= Number(filters.to || Infinity)));
   });
