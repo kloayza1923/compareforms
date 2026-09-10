@@ -27,11 +27,21 @@ export function incidenceCount(item: Case, type: ChangeType | 'all' = 'all') {
 
 // Largest remainder at 0.1 percentage point: displayed slices sum to exactly 100%.
 export function coveragePercentages(units: Record<ChangeType | 'unchanged', number>) {
-  const keys = [...statisticTypes, 'unchanged'] as const;
+  const keys = [...statisticTypes, 'unchanged' as const];
   const total = keys.reduce((sum, key) => sum + units[key], 0);
   const values = keys.map(key => total ? units[key] * 1000 / total : 0);
   const tenths = values.map(Math.floor);
   const remaining = total ? 1000 - tenths.reduce((sum, value) => sum + value, 0) : 0;
   [...keys.keys()].sort((a,b) => (values[b] - tenths[b]) - (values[a] - tenths[a])).slice(0, remaining).forEach(index => tenths[index]++);
   return Object.fromEntries(keys.map((key, index) => [key, tenths[index] / 10])) as Record<ChangeType | 'unchanged', number>;
+}
+
+export function incidencePercentages(counts: Record<ChangeType, number>) {
+  const keys = [...statisticTypes] as const;
+  const total = keys.reduce((sum, key) => sum + (counts[key] || 0), 0);
+  const values = keys.map(key => total ? (counts[key] || 0) * 1000 / total : 0);
+  const tenths = values.map(Math.floor);
+  const remaining = total ? 1000 - tenths.reduce((sum, value) => sum + value, 0) : 0;
+  [...keys.keys()].sort((a,b) => (values[b] - tenths[b]) - (values[a] - tenths[a])).slice(0, remaining).forEach(index => tenths[index]++);
+  return Object.fromEntries(keys.map((key, index) => [key, tenths[index] / 10])) as Record<ChangeType, number>;
 }

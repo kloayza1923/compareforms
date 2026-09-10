@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { summarizeCases, incidenceCount, coveragePercentages } from './statistics';
+import { summarizeCases, incidenceCount, coveragePercentages, incidencePercentages } from './statistics';
 import { RunStatistics } from './RunStatistics';
 import type { Case, ChangeType } from './types';
 afterEach(cleanup);
@@ -23,6 +23,51 @@ describe('review statistics',()=>{
   expect(screen.getByRole('img').getAttribute('aria-label')).toBe('Porcentaje comparativo no disponible');
   expect(screen.queryByText(/NaN/)).toBeNull();
  });
+  it('calculates incidence percentages summing to 100% with largest remainder', () => {
+    const shares = incidencePercentages({ added: 18, removed: 24, modified: 41, relocated: 23, review: 85 });
+    const sum = Math.round(Object.values(shares).reduce((a, b) => a + b, 0) * 10) / 10;
+    expect(sum).toBe(100);
+    expect(shares.added).toBe(9.4);
+    expect(shares.removed).toBe(12.6);
+    expect(shares.modified).toBe(21.5);
+    expect(shares.relocated).toBe(12);
+    expect(shares.review).toBe(44.5);
+  });
+  it('renders incidence percentages for patient when content coverage is not available', () => {
+    const patientCase: Case = {
+      id: 'patient-1',
+      patient_name: 'ALMEIDA LEON COLOMBIA AMADA',
+      status: 'completed',
+      original_id: 'o',
+      modified_id: 'm',
+      comparison: {
+        status: 'with_differences',
+        pages_original: 10,
+        pages_modified: 10,
+        pages_added: 0,
+        pages_removed: 0,
+        pages_relocated: 0,
+        page_map: [],
+        limitations: [],
+        engine_version: 'test',
+        findings: [
+          ...Array.from({ length: 18 }, (_, i) => ({ id: `add-${i}`, change_type: 'added' as ChangeType, category: 'test', description: 'test', before: 'a', after: 'b', page_original: 1, page_modified: 1, confidence: 1, review_required: false, page_relocated: false })),
+          ...Array.from({ length: 24 }, (_, i) => ({ id: `rem-${i}`, change_type: 'removed' as ChangeType, category: 'test', description: 'test', before: 'a', after: 'b', page_original: 1, page_modified: 1, confidence: 1, review_required: false, page_relocated: false })),
+          ...Array.from({ length: 41 }, (_, i) => ({ id: `mod-${i}`, change_type: 'modified' as ChangeType, category: 'test', description: 'test', before: 'a', after: 'b', page_original: 1, page_modified: 1, confidence: 1, review_required: false, page_relocated: false })),
+          ...Array.from({ length: 23 }, (_, i) => ({ id: `rel-${i}`, change_type: 'relocated' as ChangeType, category: 'test', description: 'test', before: 'a', after: 'b', page_original: 1, page_modified: 1, confidence: 1, review_required: false, page_relocated: false })),
+          ...Array.from({ length: 85 }, (_, i) => ({ id: `rev-${i}`, change_type: 'review' as ChangeType, category: 'test', description: 'test', before: 'a', after: 'b', page_original: 1, page_modified: 1, confidence: 1, review_required: false, page_relocated: false })),
+        ],
+      },
+    };
+    render(<RunStatistics scope="patient" cases={[patientCase]} totalCases={1} active={false} selected="all" onSelect={() => {}} />);
+    expect(screen.getByRole('img').getAttribute('aria-label')).toContain('Distribución de 191 incidencias');
+    expect(screen.getByText('100%')).toBeDefined();
+    expect(screen.getByText(/44,5%/)).toBeDefined();
+    expect(screen.getByText(/21,5%/)).toBeDefined();
+    expect(screen.getByText(/12,6%/)).toBeDefined();
+    expect(screen.getByText(/9,4%/)).toBeDefined();
+    expect(screen.queryByText(/Esta ejecución no tiene una medición comparativa/)).toBeNull();
+  });
  it('exposes percentages, counts and category selection',()=>{
   const onSelect=vi.fn();render(<RunStatistics cases={[item('one',['modified','modified','added']),item('two',[])]} totalCases={2} active={false} selected="all" onSelect={onSelect} />);
   expect(screen.getAllByText('50%').length).toBeGreaterThan(0);
