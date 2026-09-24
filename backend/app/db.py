@@ -50,9 +50,11 @@ class Batch(Base):
     period: Mapped[str] = mapped_column(String(7))
     source_mode: Mapped[str] = mapped_column(String(20))
     source_system: Mapped[str] = mapped_column(String(30))
+    source_batch_id: Mapped[str | None] = mapped_column(String(100))
     status: Mapped[str] = mapped_column(String(30), default="draft")
     rejections: Mapped[list] = mapped_column(J, default=list)
     created_at: Mapped[float] = mapped_column(Float, default=now)
+    __table_args__ = (UniqueConstraint("organization_id", "source_batch_id", name="uq_batch_roboti_source"),)
 
 class Document(Base):
     __tablename__ = "documents"

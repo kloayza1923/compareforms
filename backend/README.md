@@ -1,8 +1,8 @@
 # CompareForms V1 — backend y ensayo local
 
-FastAPI/PostgreSQL con worker persistente para comparación manual, motor A de mínimo error y Excel descargable. React se compila en WSL; Node/node_modules no se despliegan al 201. La arquitectura futura encoder-decoder permanece deshabilitada: superar 1000 PDF únicos solo habilitaría evaluación del corpus, no entrenamiento automático.
+FastAPI/PostgreSQL con worker persistente para comparar PDF originales importados desde lotes completos de Roboti o cargados manualmente desde otra fuente, motor A de mínimo error y Excel descargable. React se compila en WSL; Node/node_modules no se despliegan al 201. La arquitectura futura encoder-decoder permanece deshabilitada: superar 1000 PDF únicos solo habilitaría evaluación del corpus, no entrenamiento automático.
 
-Estas instrucciones corresponden a `/home/mdconsgroup/projects/compareforms` en WSL local. **No se ha desplegado esta V1 al servidor 201.** API local en `127.0.0.1:8027`; los ejemplos productivos de `ops/` reservan `127.0.0.1:8015` y requieren configuración/validación separada. No usar el servidor de desarrollo Vite como servicio productivo.
+Estas instrucciones corresponden a `/home/mdconsgroup/projects/compareforms` en WSL local. El servidor 201 tiene servicios `compareforms` y `compareforms-worker` activos; aplicar la migración `0003_roboti_origin` antes de reiniciar la API actualizada. API local en `127.0.0.1:8027`; los ejemplos productivos de `ops/` reservan `127.0.0.1:8015` y requieren configuración/validación separada. No usar el servidor de desarrollo Vite como servicio productivo.
 
 ## 1. Entorno Python y PostgreSQL local
 
@@ -45,7 +45,7 @@ PYTHONPATH="$PWD" python scripts/probe_aitrol_identity.py
 
 La cuenta debe estar activa, tener uno de los roles permitidos por Roboti y acceso a una empresa activa. Si tiene varias empresas, el portal solicita elegir una antes de crear sesión. Los usuarios y sus contraseñas se administran en Aitrol. La nueva membresía interna se registra en PostgreSQL al primer ingreso, sin copiar la contraseña ni su hash de Aitrol. Consulte [AUTENTICACION_AITROL.md](AUTENTICACION_AITROL.md) para roles, permisos, pruebas y límites.
 
-El archivo local configura cookie no segura solo para HTTP en localhost; producción requiere HTTPS y `SESSION_COOKIE_SECURE=true`. CompareForms mantiene una sesión propia: compartir credenciales no implica inicio de sesión automático al entrar en Roboti.
+El archivo local configura cookie no segura solo para HTTP en localhost; producción requiere HTTPS y `SESSION_COOKIE_SECURE=true`. El portal CompareForms independiente mantiene su sesión propia; la vista incrustada desde Aitrol usa el ticket de un solo uso de Roboti y el gateway, sin transmitir contraseñas ni crear otra cookie en el iframe.
 
 ## 3. API y worker: dos terminales
 
@@ -104,4 +104,4 @@ Los scripts y resultados legacy, incluido `run_compare.py`, se conservan para tr
 
 ## 6. Producción: aún no ejecutada
 
-Consulte `../ops/README-deploy.md` para el gate y `bash ../deploy_front.sh --help` para publicación solo de estáticos. El deploy frontend no despliega backend/worker, no migra PostgreSQL y no copia documentos. Las plantillas TLS, permisos, servicios y los puertos deben aprobarse antes de activar 201. La integración automática Roboti requiere un contrato M2M propio aún pendiente; el flujo manual permite ensayar sin modificar Roboti.
+Consulte `../ops/README-deploy.md` para el gate y `bash ../deploy_front.sh --help` para publicación solo de estáticos. El deploy frontend no despliega backend/worker, no migra PostgreSQL y no copia documentos. Las plantillas TLS, permisos, servicios y los puertos deben aprobarse antes de activar 201. La integración Roboti utiliza el gateway autenticado y el ticket temporal del lote Aitrol. GET/POST `/api/v1/compareforms/roboti-source` en Roboti verifican lote, empresa, período y PDF completos; POST importa un ZIP servidor a servidor a `/api/v1/roboti/origin`. El token M2M no llega al navegador. La revisión queda ligada por `source_batch_id` y conserva subida del modificado, asociaciones, comparación y Excel. El iframe Aitrol requiere un origen HTTPS válido y autorizado en `frame-ancestors`; el listener LAN HTTP de 201:8014 no sirve para incrustar en Aitrol HTTPS.

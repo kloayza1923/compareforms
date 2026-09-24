@@ -23,7 +23,7 @@ from .security import identity
 
 MULTIPART_ALLOWANCE = 1024 * 1024
 REPLAY_CHUNK_SIZE = 64 * 1024
-UPLOAD_PATH = re.compile(r"^/api/v1/batches/[^/]+/uploads/?$")
+UPLOAD_PATH = re.compile(r"^/api/v1/(?:batches/[^/]+/uploads|roboti/origin)/?$")
 
 
 class UploadGuardMiddleware:

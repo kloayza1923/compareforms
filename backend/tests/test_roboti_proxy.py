@@ -29,7 +29,7 @@ def test_bad_secret_revocation_and_company_are_rejected(portal, client):
 
 def test_proxy_mutation_keeps_organization_acl(portal, client):
     headers = setup(portal)
-    created = client.post('/api/v1/batches', headers=headers, json={'name':'Synthetic review', 'period':'2026_09','source_mode':'manual','source_system':'dalia'})
+    created = client.post('/api/v1/batches', headers=headers, json={'name':'Synthetic review', 'period':'2026_09','source_mode':'manual','source_system':'manual_otro'})
     assert created.status_code == 201, created.text
     batch_id = created.json()['id']
     assert client.get('/api/v1/batches/' + batch_id + '/inventory', headers=headers).status_code == 200

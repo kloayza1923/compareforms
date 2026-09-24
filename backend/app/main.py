@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 from typing import Literal
 from collections import defaultdict
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Request, Response, HTTPException, UploadFile, File
+from fastapi import FastAPI, Request, Response, HTTPException, UploadFile, File, Form
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -28,7 +28,7 @@ class BatchIn(BaseModel):
     name: str = Field(min_length=1, max_length=200)
     period: str = Field(pattern=r"^20\d{2}_(0[1-9]|1[0-2])$")
     source_mode: Literal["manual", "roboti"] = "manual"
-    source_system: Literal["dalia", "manual_otro", "roboti"] = "dalia"
+    source_system: Literal["manual_otro", "roboti"] = "manual_otro"
 class PairIn(BaseModel):
     original_id: str
     modified_id: str
@@ -57,7 +57,7 @@ class ImprovementIn(BaseModel):
     expected_benefit: str = Field(min_length=1, max_length=6000)
 
 def batch_out(b):
-    return {k: getattr(b, k) for k in ("id", "name", "period", "status", "source_mode", "source_system", "created_at")}
+    return {k: getattr(b, k) for k in ("id", "name", "period", "status", "source_mode", "source_system", "source_batch_id", "created_at")}
 def doc_out(d):
     return {k: getattr(d, k) for k in ("id", "side", "original_name", "patient_name")}
 def case_out(c):
@@ -88,7 +88,7 @@ def create_app(settings: Settings | None = None):
 
     def batch_for(db, user, batch_id):
         b = db.get(m.Batch, batch_id)
-        if not b or b.organization_id != user.organization_id: raise HTTPException(404, "Revisión no encontrada.")
+        if not b or b.organization_id != user.organization_id or (getattr(user, "_source_batch_id", None) and b.source_batch_id != user._source_batch_id): raise HTTPException(404, "Revisión no encontrada.")
         return b
     def run_for(db, user, run_id):
         r = db.get(m.Run, run_id)
@@ -210,22 +210,83 @@ def create_app(settings: Settings | None = None):
         with SessionLocal() as db:
             user, _ = identity(request, db)
             count = db.scalar(select(func.count(func.distinct(m.Document.sha256))).join(m.Batch).where(m.Batch.organization_id == user.organization_id))
-            return {"roboti": {"enabled": False, "reason": "Pendiente contrato M2M autorizado para buscar, generar y descargar. Use carga manual."}, "ml": {"enabled": False, "architecture": "encoder_decoder", "unique_pdf_count": count, "threshold": 1000, "eligible_for_evaluation": count > 1000, "reason": "Sin modelo entrenado. Superar 1000 PDF únicos permite evaluar el corpus; requiere etiquetas adjudicadas y aprobación."}}
+            return {"roboti": {"enabled": bool(getattr(user, "_source_batch_id", None)), "reason": "Origen Roboti disponible desde el lote autorizado en Aitrol." if getattr(user, "_source_batch_id", None) else "Abra Nueva comparación desde un lote autorizado de Aitrol o use otra fuente manual."}, "ml": {"enabled": False, "architecture": "encoder_decoder", "unique_pdf_count": count, "threshold": 1000, "eligible_for_evaluation": count > 1000, "reason": "Sin modelo entrenado. Superar 1000 PDF únicos permite evaluar el corpus; requiere etiquetas adjudicadas y aprobación."}}
 
     @app.get(prefix + "/batches")
     def batches(request: Request):
         with SessionLocal() as db:
             user, _ = identity(request, db)
-            return [batch_out(b) for b in db.scalars(select(m.Batch).where(m.Batch.organization_id == user.organization_id).order_by(m.Batch.created_at.desc()))]
+            query = select(m.Batch).where(m.Batch.organization_id == user.organization_id)
+            if getattr(user, "_source_batch_id", None): query = query.where(m.Batch.source_batch_id == user._source_batch_id)
+            return [batch_out(b) for b in db.scalars(query.order_by(m.Batch.created_at.desc()))]
 
     @app.post(prefix + "/batches", status_code=201)
     def add_batch(data: BatchIn, request: Request):
-        if data.source_mode == "manual" and data.source_system == "roboti": raise HTTPException(422, "Seleccione DALIA u otro origen manual.")
-        if data.source_mode == "roboti" and data.source_system != "roboti": raise HTTPException(422, "Procedencia incoherente con modo Roboti.")
+        if data.source_mode == "manual" and data.source_system == "roboti": raise HTTPException(422, "Seleccione un origen manual válido.")
+        if data.source_mode == "roboti": raise HTTPException(422, "El origen Roboti se crea únicamente desde el lote verificado.")
         with SessionLocal() as db:
             user, _ = identity(request, db, mutate=True)
+            if getattr(user, "_source_batch_id", None): raise HTTPException(403, "Cree la revisión desde el lote Roboti verificado.")
             b = m.Batch(**data.model_dump(), organization_id=user.organization_id, creator_id=user.id)
             db.add(b); db.flush(); m.event(db, user, "create_batch", b.id); db.commit()
+            return batch_out(b)
+
+    @app.post(prefix + "/roboti/origin", status_code=201)
+    def import_roboti_origin(request: Request, source_batch_id: str = Form(...),
+                             period: str = Form(...), name: str = Form(...),
+                             expected_pdf_count: int = Form(...), file: UploadFile = File(...)):
+        """Only the authenticated Roboti gateway may provide a verified batch ZIP."""
+        if not request.headers.get("X-Roboti-Proxy-Token"):
+            raise HTTPException(403, "La importación requiere la integración Roboti.")
+        if not re.fullmatch(r"[A-Za-z0-9_-]{1,100}", source_batch_id):
+            raise HTTPException(422, "Identificador de lote inválido.")
+        if not re.fullmatch(r"20\d{2}_(?:0[1-9]|1[0-2])", period):
+            raise HTTPException(422, "Período inválido.")
+        if not (1 <= expected_pdf_count <= cfg.max_zip_entries):
+            raise HTTPException(422, "Cantidad de PDF inválida.")
+        if not name.strip() or len(name.strip()) > 200:
+            raise HTTPException(422, "Nombre de revisión inválido.")
+        with SessionLocal() as db:
+            user, _ = identity(request, db, mutate=True)
+            if getattr(user, "_source_batch_id", None) and user._source_batch_id != source_batch_id:
+                raise HTTPException(403, "Lote fuera del alcance autorizado.")
+            existing = db.scalar(select(m.Batch).where(m.Batch.organization_id == user.organization_id,
+                         m.Batch.source_batch_id == source_batch_id))
+            if existing:
+                if existing.period != period or existing.source_mode != "roboti":
+                    raise HTTPException(409, "El lote ya está asociado a otra revisión.")
+                return batch_out(existing)
+            if getattr(user, "_source_batch_id", None) and user._source_batch_id != source_batch_id:
+                raise HTTPException(403, "Lote fuera del alcance autorizado.")
+            b = m.Batch(id=m.uid(), name=name.strip(), period=period, source_mode="roboti",
+                        source_system="roboti", source_batch_id=source_batch_id,
+                        organization_id=user.organization_id, creator_id=user.id)
+            folder = private_path(cfg.documents_root, f"{period}/batches/{b.id}/roboti/{m.uid()}")
+            try:
+                docs, rejections = ingest_zip(file.file, folder, cfg)
+            except ValueError as exc:
+                raise HTTPException(422, str(exc)) from exc
+            if rejections or len(docs) != expected_pdf_count or len({item["sha256"] for item in docs}) != len(docs):
+                raise HTTPException(422, "El ZIP de Roboti está incompleto o contiene documentos rechazados.")
+            seen = set()
+            db.add(b)
+            for item in docs:
+                if item["sha256"] in seen:
+                    continue
+                seen.add(item["sha256"])
+                path = item.pop("path")
+                db.add(m.Document(batch_id=b.id, side="original",
+                                  storage_key=str(path.relative_to(cfg.documents_root.resolve())), **item))
+            m.event(db, user, "import_roboti_origin", b.id)
+            try:
+                db.commit()
+            except IntegrityError:
+                db.rollback()
+                existing = db.scalar(select(m.Batch).where(m.Batch.organization_id == user.organization_id,
+                             m.Batch.source_batch_id == source_batch_id))
+                if existing and existing.period == period and existing.source_mode == "roboti":
+                    return batch_out(existing)
+                raise
             return batch_out(b)
 
     @app.get(prefix + "/batches/{batch_id}/inventory")
@@ -288,7 +349,7 @@ def create_app(settings: Settings | None = None):
             if existing:
                 if existing.payload_hash != payload_hash: raise HTTPException(409, "Clave reutilizada con parámetros diferentes.")
                 return {"id": existing.id, "status": existing.status}
-            if b.source_mode == "roboti": raise HTTPException(409, "Generación Roboti no disponible aún. Cree una revisión manual.")
+            if b.source_mode == "roboti" and (not b.source_batch_id or not db.scalar(select(func.count(m.Document.id)).where(m.Document.batch_id == b.id, m.Document.side == "original"))): raise HTTPException(409, "El origen Roboti todavía no está importado.")
             inv = inventory(db, b)
             confirmed = [p for p in inv["pairs"] if p["confirmed"]]
             if not confirmed: raise HTTPException(422, "NO_COMPARABLE_PAIRS: confirme al menos una pareja de PDF.")
@@ -305,7 +366,9 @@ def create_app(settings: Settings | None = None):
     def runs(request: Request):
         with SessionLocal() as db:
             user, _ = identity(request, db)
-            return [{"id": r.id, "batch_id": r.batch_id, "status": r.status, "completed": r.completed, "total": r.total, "created_at": r.created_at, "report_available": bool(r.report_key)} for r in db.scalars(select(m.Run).join(m.Batch).where(m.Batch.organization_id == user.organization_id).order_by(m.Run.created_at.desc()))]
+            query = select(m.Run).join(m.Batch).where(m.Batch.organization_id == user.organization_id)
+            if getattr(user, "_source_batch_id", None): query = query.where(m.Batch.source_batch_id == user._source_batch_id)
+            return [{"id": r.id, "batch_id": r.batch_id, "status": r.status, "completed": r.completed, "total": r.total, "created_at": r.created_at, "report_available": bool(r.report_key)} for r in db.scalars(query.order_by(m.Run.created_at.desc()))]
 
     @app.get(prefix + "/runs/{run_id}")
     def get_run(run_id: str, request: Request):
@@ -400,7 +463,11 @@ def create_app(settings: Settings | None = None):
     def improvements(request: Request):
         with SessionLocal() as db:
             user, _ = identity(request, db)
-            return [{**{k: getattr(p, k) for k in ("id", "case_id", "finding_id", "description", "expected_benefit", "source_system", "status", "created_at")}, "run_id": c.run_id} for p, c in db.execute(select(m.Improvement, m.RunCase).join(m.RunCase, m.RunCase.id == m.Improvement.case_id).where(m.Improvement.organization_id == user.organization_id).order_by(m.Improvement.created_at.desc()))]
+            query = (select(m.Improvement, m.RunCase).join(m.RunCase, m.RunCase.id == m.Improvement.case_id)
+                     .join(m.Run, m.Run.id == m.RunCase.run_id).join(m.Batch, m.Batch.id == m.Run.batch_id)
+                     .where(m.Improvement.organization_id == user.organization_id))
+            if getattr(user, "_source_batch_id", None): query = query.where(m.Batch.source_batch_id == user._source_batch_id)
+            return [{**{k: getattr(p, k) for k in ("id", "case_id", "finding_id", "description", "expected_benefit", "source_system", "status", "created_at")}, "run_id": c.run_id} for p, c in db.execute(query.order_by(m.Improvement.created_at.desc()))]
 
     @app.post(prefix + "/improvements", status_code=201)
     def propose(data: ImprovementIn, request: Request):

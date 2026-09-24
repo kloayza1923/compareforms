@@ -89,7 +89,7 @@ def test_maintenance_deactivation_preserves_user_and_revokes_sessions(portal, cl
         assert event.user_id is None and event.target_id == user.id
 
 
-def create_batch(client, headers, *, source_mode="manual", source_system="dalia"):
+def create_batch(client, headers, *, source_mode="manual", source_system="manual_otro"):
     response = client.post(
         f"{API}/batches",
         json={
@@ -213,7 +213,7 @@ def test_mutation_rejects_missing_or_invalid_csrf(client, csrf):
     headers = {} if csrf is None else {"X-CSRF-Token": csrf}
     response = client.post(
         f"{API}/batches",
-        json={"name": "No crear", "period": "2026_06", "source_mode": "manual", "source_system": "dalia"},
+        json={"name": "No crear", "period": "2026_06", "source_mode": "manual", "source_system": "manual_otro"},
         headers=headers,
     )
     assert response.status_code == 403
@@ -516,6 +516,10 @@ def test_manual_finding_requires_a_real_page_and_remains_separate(portal, client
 def test_dalia_improvement_keeps_provenance_and_cannot_apply_to_roboti(portal, client):
     headers = login(client)
     run_id, case_id, finding = completed_fixture(portal, client, headers)
+    with portal.state.SessionLocal() as session:
+        run = session.get(models.Run, run_id)
+        session.get(models.Batch, run.batch_id).source_system = "dalia"
+        session.commit()
     response = client.post(
         f"{API}/improvements", headers=headers,
         json={"run_id": run_id, "case_id": case_id, "finding_id": finding["id"],

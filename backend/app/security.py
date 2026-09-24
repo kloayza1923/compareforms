@@ -84,6 +84,12 @@ def roboti_identity(request: Request, db):
     if actor is None:
         raise HTTPException(403, "Usuario o empresa no autorizados en CompareForms")
     user = membership(db, actor, company_id)
+    source_batch_id = request.headers.get("X-Roboti-Source-Batch", "")
+    if source_batch_id:
+        import re
+        if not re.fullmatch(r"[A-Za-z0-9_-]{1,100}", source_batch_id):
+            raise HTTPException(401, "Alcance Roboti inválido")
+        user._source_batch_id = source_batch_id
     db.commit()
     # CSRF and Roboti-session validity were checked by the gateway on every request.
     # No independent browser session is created, so Roboti logout revokes this access.

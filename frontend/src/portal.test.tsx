@@ -26,7 +26,7 @@ describe('Flujo del auditor', () => {
     expect(create).toBeDisabled();
     fireEvent.click(screen.getByRole('checkbox', { name: /Usar carga manual/ }));
     expect(create).toBeEnabled();
-    expect(screen.getByLabelText('Procedencia del original')).toHaveValue('dalia');
+    expect(screen.getByLabelText('Procedencia del original')).toHaveValue('manual_otro');
   });
   it('cero expedientes muestra Sin comparación y botón bloqueado', async () => {
     apiMock.mockImplementation(async path => path === '/batches' ? [batch] : { documents: [], pairs: [], unpaired: [], rejections: [], can_run: true });
