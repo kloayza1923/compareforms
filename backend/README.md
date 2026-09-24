@@ -85,7 +85,7 @@ npm run build
 COMPAREFORMS_API_TARGET=http://127.0.0.1:8027 npm run dev
 ```
 
-Abra `http://127.0.0.1:5173`. La variable del último comando dirige el proxy Vite a la API local 8027; no usar el puerto 8015 de los ejemplos productivos. También puede abrir `http://127.0.0.1:8027` con el build terminado y solo la API activa: FastAPI sirve `frontend/dist`. Inicie sesión con su correo/contraseña de Roboti / Aitrol, seleccione empresa si corresponde, cree un lote, active carga manual, suba los ZIP, confirme las parejas y ejecute primero **un expediente**. Descargue el Excel desde esa ejecución.
+Abra `http://127.0.0.1:5173`. La variable del último comando dirige el proxy Vite a la API local 8027; no usar el puerto 8015 de los ejemplos productivos. También puede abrir `http://127.0.0.1:8027` con el build terminado y solo la API activa: FastAPI sirve `frontend/dist`. Inicie sesión con su correo/contraseña de Roboti / Aitrol, seleccione empresa si corresponde, cree un lote, active carga manual, suba dos PDF individuales o un ZIP por versión, confirme las parejas y ejecute primero **un expediente**. Descargue el Excel desde esa ejecución.
 
 Los nombres de archivos son sugerencias, no identificadores definitivos del paciente/atención. Revise la asociación antes de confirmar. No se inicia con cero pares ni se presenta una ejecución vacía como «sin diferencias». Origen DALIA no se atribuye automáticamente a fallas de Roboti. Las páginas de Excel corresponden al contador físico de los PDF; una eliminación sin contraparte tiene página modificada no aplicable.
 

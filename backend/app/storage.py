@@ -24,6 +24,41 @@ def private_path(root, key):
     if not path.is_relative_to(root) or path == root: raise ValueError("Ruta privada inválida.")
     return path
 
+def ingest_pdf(stream, folder: Path, settings, filename: str):
+    """Store one validated PDF under a private UUID path."""
+    safe_name = unicodedata.normalize("NFKC", PurePosixPath(filename.replace("\\", "/")).name)
+    if not safe_name or len(safe_name) > 300 or not safe_name.casefold().endswith(".pdf") or "\x00" in safe_name:
+        raise ValueError("Seleccione un archivo PDF válido.")
+    folder.mkdir(parents=True, exist_ok=True)
+    target = folder / f"{uuid4()}.pdf"
+    digest = sha256()
+    size = 0
+    try:
+        with target.open("xb") as out:
+            while chunk := stream.read(1024 * 1024):
+                size += len(chunk)
+                if size > settings.max_pdf_bytes or size > settings.max_upload_bytes:
+                    raise ValueError("PDF excede el límite de tamaño.")
+                digest.update(chunk)
+                out.write(chunk)
+        with target.open("rb") as source:
+            if not source.read(1024).lstrip().startswith(b"%PDF-"):
+                raise ValueError("Contenido no PDF.")
+        try:
+            pdf = PdfReader(target)
+            if pdf.is_encrypted:
+                raise ValueError("PDF cifrado.")
+            if not 0 < len(pdf.pages) <= settings.max_pdf_pages:
+                raise ValueError("Cantidad de páginas fuera de límite.")
+        except ValueError:
+            raise
+        except Exception as exc:
+            raise ValueError("PDF corrupto o no procesable.") from exc
+        return {"original_name": safe_name, "patient_name": patient_name(safe_name), "path": target, "size": size, "sha256": digest.hexdigest()}
+    except Exception:
+        target.unlink(missing_ok=True)
+        raise
+
 def ingest_zip(stream, folder: Path, settings):
     folder.mkdir(parents=True, exist_ok=True)
     archive = folder / f"upload-{uuid4()}.zip"

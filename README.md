@@ -2,7 +2,7 @@
 
 ## Portal V1 — entrega local 2026-09-07
 
-La interfaz nueva está en `frontend/` (React + Bootstrap); FastAPI, motor A y PostgreSQL en `backend/`. Consulte **[backend/README.md](backend/README.md)** para iniciar API/worker. Los usuarios cargan ZIP, confirman paciente/pareja y descargan Excel desde el portal.
+La interfaz nueva está en `frontend/` (React + Bootstrap); FastAPI, motor A y PostgreSQL en `backend/`. Consulte **[backend/README.md](backend/README.md)** para iniciar API/worker. Los usuarios pueden cargar dos PDF individuales o un ZIP por versión, confirmar paciente/pareja y descargar Excel desde el portal.
 
 **Actualización 2026-09-08: acceso con el mismo correo y contraseña de Roboti / Aitrol.** La instalación WSL usa la misma fuente de identidad MySQL en modo de solo lectura, con empresa seleccionada y validación de permisos. No se crean contraseñas independientes en el portal. PostgreSQL conserva comparaciones, membresías y sesiones propias, no contraseñas de Aitrol. Detalles y verificación en [backend/AUTENTICACION_AITROL.md](backend/AUTENTICACION_AITROL.md). Esta actualización es local, no un despliegue al 201.
 

@@ -16,7 +16,7 @@ from sqlalchemy.exc import IntegrityError
 from .config import Settings
 from . import db as m
 from .security import identity, public_user, password_hash, verify, digest, throttle
-from .storage import ingest_zip, private_path, name_key
+from .storage import ingest_pdf, ingest_zip, private_path, name_key
 from .upload_guard import UploadGuardMiddleware
 from .aitrol_identity import AitrolIdentityProvider, IdentityUnavailable, membership
 
@@ -301,9 +301,16 @@ def create_app(settings: Settings | None = None):
             user, _ = identity(request, db, mutate=True)
             b = batch_for(db, user, batch_id)
             if side == "original" and b.source_mode != "manual": raise HTTPException(409, "Active carga manual para subir el origen.")
-            # Intake stored under UUID; never source ZIP filenames as paths.
+            # Intake stored under UUID; never source filenames as paths.
             folder = private_path(cfg.documents_root, f"{b.period}/batches/{b.id}/uploads/{m.uid()}")
-            try: docs, rejections = ingest_zip(file.file, folder, cfg)
+            filename = file.filename or ""
+            try:
+                if filename.casefold().endswith(".zip"):
+                    docs, rejections = ingest_zip(file.file, folder, cfg)
+                elif filename.casefold().endswith(".pdf"):
+                    docs, rejections = [ingest_pdf(file.file, folder, cfg, filename)], []
+                else:
+                    raise ValueError("Seleccione un archivo ZIP o PDF.")
             except ValueError as e: raise HTTPException(422, str(e))
             existing = set(db.scalars(select(m.Document.sha256).where(m.Document.batch_id == b.id, m.Document.side == side)))
             for d in docs:

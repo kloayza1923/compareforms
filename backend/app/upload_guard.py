@@ -1,7 +1,7 @@
 """Authenticate and bound upload bodies before FastAPI parses multipart data.
 
 Only complete, size-checked bodies are replayed to the application. Buffering
-uses a private temporary file, never an in-memory copy of the complete ZIP.
+uses a private temporary file, never an in-memory copy of the complete upload.
 The file is removed on success, rejection, disconnect and downstream errors.
 """
 
@@ -27,7 +27,7 @@ UPLOAD_PATH = re.compile(r"^/api/v1/(?:batches/[^/]+/uploads|roboti/origin)/?$")
 
 
 class UploadGuardMiddleware:
-    """Pure ASGI guard for the ZIP intake endpoint (``side`` is a query arg).
+    """Pure ASGI guard for the ZIP/PDF intake endpoint (``side`` is a query arg).
 
     ``session_factory`` is the same SQLAlchemy factory used by the application.
     The route still authorizes the batch and validates its state after this

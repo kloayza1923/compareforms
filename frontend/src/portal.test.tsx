@@ -22,7 +22,7 @@ beforeEach(() => vi.clearAllMocks());
 describe('Flujo del auditor', () => {
   it('exige seleccionar la alternativa manual y no simula Roboti', () => {
     render(<NewComparison capabilities={null} />);
-    const create = screen.getByRole('button', { name: /Crear revisión y cargar ZIP/ });
+    const create = screen.getByRole('button', { name: /Crear revisión y cargar documentos/ });
     expect(create).toBeDisabled();
     fireEvent.click(screen.getByRole('checkbox', { name: /Usar carga manual/ }));
     expect(create).toBeEnabled();
